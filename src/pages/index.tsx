@@ -2,8 +2,10 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "@/styles/Home.module.scss";
 import mango from "../../public/image/mango.jpg";
+import classNames from "classnames";
 
 export default function Home() {
+  const cx = classNames.bind(styles);
   return (
     <>
       <Head>
@@ -17,6 +19,7 @@ export default function Home() {
           <Image src={mango} layout="fill" alt="망고" />
         </div>
         <p>귀여운 망고</p>
+        <p>젠킨스 테스트</p>
       </main>
     </>
   );
