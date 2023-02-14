@@ -21,7 +21,7 @@ export default function Home() {
         <p>귀여운 망고</p>
         <p>젠킨스 테스트</p>
         <p>젠킨스 테스트2</p>
-        <p>젠킨스 테스트 {new Date()}</p>
+        <p>젠킨스 테스트 최종~</p>
       </main>
     </>
   );
