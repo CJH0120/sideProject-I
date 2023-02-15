@@ -21,7 +21,7 @@ export default function Home() {
 				<p>귀여운 망고</p>
 				<p>젠킨스 테스트</p>
 				<p>aws 램 테스트</p>
-				<p>aws 램 테스트 2</p>
+				<p>aws 램 테스트 222</p>
 			</main>
 		</>
 	);
