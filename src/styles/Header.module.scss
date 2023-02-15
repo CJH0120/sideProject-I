@@ -9,7 +9,9 @@
   padding: 0 65px;
   max-width: 1300px;
   margin: 0 auto;
-
+  @media all and (max-width: $media-width) {
+    padding: 0 16px;
+  }
   .list {
     display: flex;
     align-items: center;
