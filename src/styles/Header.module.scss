@@ -1,0 +1,55 @@
+@import './variables.scss';
+
+.header-wrap {
+  width: 100%;
+  height: 65px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 65px;
+  max-width: 1300px;
+  margin: 0 auto;
+
+  .list {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      .logo {
+        font-size: 48px;
+      }
+      .logo-text {
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 39px;
+        margin-left: 6px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+    }
+    .header-category {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      width: auto;
+      margin-left: 100px;
+      .category {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 39px;
+        cursor: pointer;
+        &:not(&:first-child) {
+          margin-left: 40px;
+        }
+      }
+      @media all and (max-width: $media-width) {
+        display: none;
+      }
+    }
+  }
+}
