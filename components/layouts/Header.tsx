@@ -13,7 +13,7 @@ interface HeadPorps {
 
 const cx = classNames.bind(Styles)
 const Header = ({ meta = 'Petty', title = 'Petty' }: HeadPorps) => {
-  const category: string[] = ['test1', 'test2', 'test3', 'test4']
+  const category: string[] = ['커뮤니티', 'Today', 'Best', 'TimeLine']
   return (
     <>
       <Head>
@@ -32,7 +32,7 @@ const Header = ({ meta = 'Petty', title = 'Petty' }: HeadPorps) => {
           <div className={cx('header-category')}>
             {category.map(v => (
               <div className={cx('category')} key={v}>
-                {v}
+                <Link href={`/${v}`}> {v}</Link>
               </div>
             ))}
           </div>

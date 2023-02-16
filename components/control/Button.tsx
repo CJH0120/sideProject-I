@@ -16,7 +16,7 @@ const Button = React.forwardRef(
       handleClick(e)
     }
     return (
-      <button onClick={handleClick} className={cx('button-wrap', Classname, border && 'border', color, size)}>
+      <button onClick={HandleClick} className={cx('button-wrap', Classname, border && 'border', color, size)}>
         {children}
       </button>
     )

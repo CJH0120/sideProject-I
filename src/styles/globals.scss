@@ -1,13 +1,11 @@
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace',
-    'Source Code Pro', 'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
 }
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -20,11 +18,11 @@
   padding: 0;
   margin: 0;
 }
-@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Condensed&display=swap');
+
 html,
 body,
 [id='__next'] {
-  font-family: 'Lobster', cursive;
+  font-family: 'Roboto', sans-serif;
   height: 100%;
   max-height: 100vh;
 }
