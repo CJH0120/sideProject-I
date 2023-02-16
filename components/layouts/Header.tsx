@@ -28,7 +28,9 @@ const Header = ({ meta = 'Petty', title = 'Petty' }: HeadPorps) => {
           </div>
           <div className={cx('header-category')}>
             {category.map(v => (
-              <div className={cx('category')}>{v}</div>
+              <div className={cx('category')} key={v}>
+                {v}
+              </div>
             ))}
           </div>
         </div>
