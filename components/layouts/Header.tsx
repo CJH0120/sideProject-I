@@ -2,6 +2,9 @@ import classNames from 'classnames/bind'
 import Styles from '@/styles/Header.module.scss'
 import Head from 'next/head'
 import IconLogo from 'components/icons/IconLogo'
+import Button from 'components/control/Button'
+import Link from 'next/link'
+import IconHamburger from 'components/icons/IconHamburger'
 
 interface HeadPorps {
   meta?: string
@@ -34,7 +37,19 @@ const Header = ({ meta = 'Petty', title = 'Petty' }: HeadPorps) => {
             ))}
           </div>
         </div>
-        <div>asds</div>
+        <div className={cx('button-wrap')}>
+          <div className={cx('button-icon')}>
+            <IconHamburger className={cx('icon')} />
+          </div>
+          <Link href={'/login'}>
+            <Button size="S" border Classname={cx('btn', 'margin')}>
+              로그인
+            </Button>
+          </Link>
+          <Button size="S" border Classname={cx('btn')} color="yellow">
+            회원가입
+          </Button>
+        </div>
       </header>
     </>
   )
