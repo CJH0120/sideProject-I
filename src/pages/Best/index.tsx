@@ -1,5 +1,11 @@
+import Layout from 'components/layouts/Layouts'
+
 const Best = () => {
-  return <div>베스트페이지</div>
+  return (
+    <Layout header>
+      <div>jj</div>
+    </Layout>
+  )
 }
 
 export default Best

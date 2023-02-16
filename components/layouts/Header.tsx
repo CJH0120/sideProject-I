@@ -25,10 +25,12 @@ const Header = ({ meta = 'Petty', title = 'Petty' }: HeadPorps) => {
       </Head>
       <header className={cx('header-wrap')}>
         <div className={cx('list')}>
-          <div className={cx('header-logo')}>
-            <IconLogo className={cx('logo')} />
-            <span className={cx('logo-text')}>Petty</span>
-          </div>
+          <Link href="/">
+            <div className={cx('header-logo')}>
+              <IconLogo className={cx('logo')} />
+              <span className={cx('logo-text')}>Petty</span>
+            </div>
+          </Link>
           <div className={cx('header-category')}>
             {category.map(v => (
               <div className={cx('category')} key={v}>
