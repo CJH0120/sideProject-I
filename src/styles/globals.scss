@@ -20,10 +20,11 @@
   padding: 0;
   margin: 0;
 }
-
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Condensed&display=swap');
 html,
 body,
 [id='__next'] {
+  font-family: 'Lobster', cursive;
   height: 100%;
   max-height: 100vh;
 }
