@@ -9,28 +9,26 @@ type ButtonProps = {
   icon?: boolean
   size?: 'S' | 'M' | 'L'
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
-} & React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
+}
 const cx = classNames.bind(Styles)
-const Button = React.forwardRef(
-  ({
-    onClick: handleClick = () => {},
-    ref,
-    icon = false,
-    Classname,
-    children,
-    border = false,
-    color = 'white',
-    size = 'S',
-  }: ButtonProps) => {
-    const HandleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-      handleClick(e)
-    }
-    return (
-      <button ref={ref} onClick={HandleClick} className={cx('button-wrap', Classname, border && 'border', color, size, icon && 'icon')}>
-        {children}
-      </button>
-    )
-  },
-)
+const Button = ({
+  onClick: handleClick = () => {},
+  icon = false,
+  Classname,
+  children,
+  border = false,
+  color = 'white',
+  size = 'S',
+}: ButtonProps) => {
+  const HandleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    handleClick(e)
+  }
+  return (
+    <button onClick={HandleClick} className={cx('button-wrap', Classname, border && 'border', color, size, icon && 'icon')}>
+      {children}
+    </button>
+  )
+}
+
 Button.displayName = 'Button'
 export default Button
