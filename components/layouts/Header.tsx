@@ -13,7 +13,7 @@ interface HeadPorps {
 
 const cx = classNames.bind(Styles)
 const Header = ({ meta = 'Petty', title = 'Petty' }: HeadPorps) => {
-  const category: string[] = ['커뮤니티', 'Today', 'Best', 'TimeLine']
+  const category: string[] = ['Today', 'Best', 'TimeLine', 'Community']
   return (
     <>
       <Head>

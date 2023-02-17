@@ -31,7 +31,6 @@
         font-weight: 900;
         font-size: 35px;
         line-height: 100%;
-        letter-spacing: 5px;
         margin-left: 6px;
         height: 45px;
         display: flex;
@@ -46,8 +45,9 @@
       display: flex;
       align-items: center;
       height: 45px;
+      font-weight: 200;
       width: auto;
-      margin-left: 100px;
+      margin-left: 80px;
 
       .category {
         height: 100%;
