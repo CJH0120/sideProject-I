@@ -1,0 +1,18 @@
+@import './variables.scss';
+
+.layouts-wrap {
+  font-family: 'Noto Sans KR', sans-serif;
+  padding: 20px 65px;
+  min-height: calc(100vh - $footer-height - $header-height);
+  flex-direction: column;
+  display: flex;
+  flex: 1;
+  @media all and (max-width: $media-width) {
+    padding: 10px 16px;
+  }
+  .layouts-content {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+}

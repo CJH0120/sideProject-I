@@ -1,0 +1,22 @@
+@import './variables.scss';
+
+.footer-wrap {
+  @media all and (max-width: $media-width) {
+    padding: 15px 16px;
+  }
+  padding: 10px 65px;
+  background: #fdfdfd;
+  height: $footer-height;
+  width: 100%;
+  .footer-content {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    height: 100%;
+
+    grid-template-columns: repeat(3, 1fr);
+    .footer-item {
+      height: 100%;
+    }
+  }
+}

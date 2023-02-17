@@ -1,11 +1,11 @@
 import Layout from 'components/layouts/Layouts'
 
-const Best = () => {
+const Today = () => {
   return (
     <Layout header footer>
-      <div>베스트 페이지</div>
+      <div>Today 페이지</div>
     </Layout>
   )
 }
 
-export default Best
+export default Today

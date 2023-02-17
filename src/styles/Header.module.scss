@@ -1,99 +1,112 @@
 @import './variables.scss';
 .header-wrap {
   width: 100%;
-  height: 65px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  height: 80px;
   padding: 10px 65px;
-  max-width: 1300px;
-  margin: 0 auto;
+  border-bottom: 1px solid #f1f3f5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   @media all and (max-width: $media-width) {
     padding: 15px 16px;
+    height: 60px;
   }
-  .list {
+  .header {
+    margin: 0 auto;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    height: 100%;
-
-    .header-logo {
+    width: 100%;
+    max-width: 1300px;
+    .list {
       display: flex;
-      height: 100%;
       align-items: center;
-      cursor: pointer;
-      .logo {
-        font-size: 45px;
+      height: 100%;
+
+      .header-logo {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        cursor: pointer;
+        .logo {
+          font-size: 45px;
+          @media all and (max-width: $media-width) {
+            font-size: 36px;
+          }
+        }
+        .logo-text {
+          font-weight: 900;
+          font-size: 35px;
+          line-height: 100%;
+          margin-left: 6px;
+          height: 45px;
+          display: flex;
+          align-items: center;
+          @media all and (max-width: $media-width) {
+            height: 36px;
+            font-size: 30px;
+          }
+        }
+      }
+      .header-category {
+        display: flex;
+        align-items: center;
+        height: 45px;
+        font-weight: 200;
+        width: auto;
+        margin-left: 80px;
+        flex-wrap: wrap;
+        gap: 30px;
+        .category {
+          font-family: 'Noto Sans KR', sans-serif;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          font-weight: 500;
+          font-size: 20px;
+          line-height: 39px;
+          cursor: pointer;
+          &:hover {
+            border-bottom: 1px solid;
+            color: $main-color;
+          }
+        }
         @media all and (max-width: $media-width) {
+          display: none;
+        }
+      }
+    }
+    .button-wrap {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      .btn {
+        font-weight: 700;
+        font-size: 15px;
+        width: 90px;
+        &.margin {
+          margin-right: 5px;
+        }
+        @media all and (max-width: $media-width) {
+          display: none;
+        }
+      }
+      .button-icon {
+        display: none;
+        @media all and (max-width: $media-width) {
+          display: block;
+          height: 36px;
+          width: 36px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
           font-size: 36px;
         }
-      }
-      .logo-text {
-        font-weight: 900;
-        font-size: 35px;
-        line-height: 100%;
-        margin-left: 6px;
-        height: 45px;
-        display: flex;
-        align-items: center;
-        @media all and (max-width: $media-width) {
-          height: 36px;
-          font-size: 30px;
+        .icon {
+          display: flex;
+          align-items: center;
+          font-size: 36px;
         }
-      }
-    }
-    .header-category {
-      display: flex;
-      align-items: center;
-      height: 45px;
-      font-weight: 200;
-      width: auto;
-      margin-left: 80px;
-
-      .category {
-        height: 100%;
-        display: flex;
-        align-items: center;
-        font-weight: 500;
-        font-size: 24px;
-        line-height: 39px;
-        cursor: pointer;
-        &:not(&:first-child) {
-          margin-left: 40px;
-        }
-      }
-      @media all and (max-width: $media-width) {
-        display: none;
-      }
-    }
-  }
-  .button-wrap {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    .btn {
-      font-weight: 700;
-      font-size: 15px;
-      width: 90px;
-      &.margin {
-        margin-right: 5px;
-      }
-      @media all and (max-width: $media-width) {
-        display: none;
-      }
-    }
-    .button-icon {
-      height: 36px;
-      width: 36px;
-      display: flex;
-      align-items: center;
-      display: none;
-      @media all and (max-width: $media-width) {
-        display: block;
-      }
-      .icon {
-        display: flex;
-        align-items: center;
-        font-size: 36px;
       }
     }
   }

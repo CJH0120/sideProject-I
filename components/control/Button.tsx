@@ -6,17 +6,18 @@ type ButtonProps = {
   color?: 'yellow' | 'white'
   children?: React.ReactNode
   Classname?: string
+  icon?: boolean
   size?: 'S' | 'M' | 'L'
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
 } & React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
 const cx = classNames.bind(Styles)
 const Button = React.forwardRef(
-  ({ onClick: handleClick = () => {}, Classname, children, border = false, color = 'white', size = 'S' }: ButtonProps) => {
+  ({ onClick: handleClick = () => {}, icon = false, Classname, children, border = false, color = 'white', size = 'S' }: ButtonProps) => {
     const HandleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       handleClick(e)
     }
     return (
-      <button onClick={HandleClick} className={cx('button-wrap', Classname, border && 'border', color, size)}>
+      <button onClick={HandleClick} className={cx('button-wrap', Classname, border && 'border', color, size, icon && 'icon')}>
         {children}
       </button>
     )

@@ -1,11 +1,11 @@
 import Layout from 'components/layouts/Layouts'
 
-const Best = () => {
+const TimeLine = () => {
   return (
     <Layout header footer>
-      <div>베스트 페이지</div>
+      <div>TimeLine 페이지</div>
     </Layout>
   )
 }
 
-export default Best
+export default TimeLine

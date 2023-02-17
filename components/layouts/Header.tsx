@@ -24,33 +24,36 @@ const Header = ({ meta = 'Petty', title = 'Petty' }: HeadPorps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header className={cx('header-wrap')}>
-        <div className={cx('list')}>
-          <Link href="/">
-            <div className={cx('header-logo')}>
-              <IconLogo className={cx('logo')} />
-              <span className={cx('logo-text')}>Petty</span>
-            </div>
-          </Link>
-          <div className={cx('header-category')}>
-            {category.map(v => (
-              <div className={cx('category')} key={v}>
-                <Link href={`/${v}`}> {v}</Link>
+        <div className={cx('header')}>
+          <div className={cx('list')}>
+            <Link href="/">
+              <div className={cx('header-logo')}>
+                <IconLogo className={cx('logo')} />
+                <span className={cx('logo-text')}>Petty</span>
               </div>
-            ))}
+            </Link>
+            <div className={cx('header-category')}>
+              {category.map(v => (
+                <div className={cx('category')} key={v}>
+                  <Link href={`/${v}`}> {v}</Link>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className={cx('button-wrap')}>
-          <div className={cx('button-icon')}>
-            <IconHamburger className={cx('icon')} />
-          </div>
-          <Link href={'/login'}>
-            <Button size="S" border Classname={cx('btn', 'margin')}>
-              로그인
+          <div className={cx('button-wrap')}>
+            <Button icon Classname={cx('button-icon')}>
+              <IconHamburger />
             </Button>
-          </Link>
-          <Button size="S" border Classname={cx('btn')} color="yellow">
-            회원가입
-          </Button>
+
+            <Link href={'/login'}>
+              <Button size="S" border Classname={cx('btn', 'margin')}>
+                로그인
+              </Button>
+            </Link>
+            <Button size="S" border Classname={cx('btn')} color="yellow">
+              회원가입
+            </Button>
+          </div>
         </div>
       </header>
     </>
