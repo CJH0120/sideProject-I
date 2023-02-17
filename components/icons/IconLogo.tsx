@@ -13,5 +13,5 @@ const IconLogo = React.memo((props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 ))
-
+IconLogo.displayName = 'IconLogo'
 export default IconLogo
