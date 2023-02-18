@@ -1,17 +1,15 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import styles from '@/styles/Home.module.scss'
 import classNames from 'classnames'
-import Header from 'components/layouts/Header'
 import Layout from 'components/layouts/Layouts'
+import CardList from 'components/layouts/CardList'
 
 export default function Home() {
   const cx = classNames.bind(styles)
   return (
     <Layout footer header>
-      <div>레이아웃 테스트</div>
-
-      <div>dd</div>
+      <CardList title="Today" />
+      <CardList title="TimeLine" />
+      <CardList title="Community" />
     </Layout>
   )
 }

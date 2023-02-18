@@ -1,9 +1,13 @@
 @import './variables.scss';
 
 .footer-wrap {
+  position: relative;
+
+  transition: padding 0.1s ease-in-out, height 0.2s;
   @media all and (max-width: $media-width) {
     padding: 15px 16px;
   }
+
   padding: 10px 65px;
   background: #fdfdfd;
   height: $footer-height;

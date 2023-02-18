@@ -35,7 +35,7 @@ const Header = ({ meta = 'Petty', title = 'Petty' }: HeadPorps) => {
             <div className={cx('header-category')}>
               {category.map(v => (
                 <div className={cx('category')} key={v}>
-                  <Link href={`/${v}`}> {v}</Link>
+                  <Link href={`/${v.toLocaleLowerCase()}`}> {v}</Link>
                 </div>
               ))}
             </div>
