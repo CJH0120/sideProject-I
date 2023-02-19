@@ -5,6 +5,8 @@ import IconLogo from 'components/icons/IconLogo'
 import Button from 'components/control/Button'
 import Link from 'next/link'
 import IconHamburger from 'components/icons/IconHamburger'
+import { useEffect, useState } from 'react'
+import ToggleMenu from './ToogleMenu'
 
 interface HeadPorps {
   meta?: string
@@ -13,6 +15,7 @@ interface HeadPorps {
 
 const cx = classNames.bind(Styles)
 const Header = ({ meta = 'Petty', title = 'Petty' }: HeadPorps) => {
+  const [isToggle, setIsToggle] = useState<boolean>(false)
   const category: string[] = ['Today', 'Best', 'TimeLine', 'Community']
   return (
     <>
@@ -40,7 +43,12 @@ const Header = ({ meta = 'Petty', title = 'Petty' }: HeadPorps) => {
               ))}
             </div>
           </div>
-          <div className={cx('button-wrap')}>
+          <div
+            className={cx('button-wrap')}
+            onClick={() => {
+              setIsToggle(true)
+            }}
+          >
             <Button icon Classname={cx('button-icon')}>
               <IconHamburger />
             </Button>
@@ -56,6 +64,7 @@ const Header = ({ meta = 'Petty', title = 'Petty' }: HeadPorps) => {
           </div>
         </div>
       </header>
+      <ToggleMenu setisToogle={setIsToggle} isToogle={isToggle} />
     </>
   )
 }

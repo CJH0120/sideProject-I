@@ -94,6 +94,9 @@
       }
       .button-icon {
         display: none;
+        &.active {
+          width: 100vw;
+        }
         @media all and (max-width: $media-width) {
           display: block;
           height: 36px;

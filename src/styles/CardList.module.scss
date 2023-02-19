@@ -3,10 +3,8 @@
 .card-list-wrap {
   width: 100%;
   max-width: 1300px;
-  height: 400px;
-  @media all and (max-width: $media-width) {
-    height: auto;
-  }
+  height: auto;
+
   &:hover {
     .card-list-head {
       .card-list-head-title {
@@ -53,11 +51,17 @@
       }
       .card-title {
         height: 40px;
+        font-size: 0.875rem;
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
+        transition: padding 0.2s ease-in;
+
+        @media all and (max-width: $mobile-width) {
+          font-size: 0.75rem;
+        }
       }
     }
     @media all and (max-width: $media-width) {
