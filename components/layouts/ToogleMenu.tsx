@@ -16,7 +16,7 @@ const ToggleMenu = ({ isToogle, setisToogle }: ToggleMenuPorps) => {
     if (isToogle) {
       document.body.style.overflow = 'hidden'
     } else {
-      document.body.style.overflow = 'scroll'
+      document.body.style.overflow = 'auto'
     }
   }, [isToogle])
   const handleCloseModal = (e: MouseEvent) => {
