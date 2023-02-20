@@ -64,7 +64,7 @@ const Header = ({ meta = 'Petty', title = 'Petty' }: HeadPorps) => {
           </div>
         </div>
       </header>
-      <ToggleMenu setisToogle={setIsToggle} isToogle={isToggle} />
+      {isToggle && <ToggleMenu setisToogle={setIsToggle} isToogle={isToggle} />}
     </>
   )
 }
