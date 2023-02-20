@@ -16,6 +16,13 @@ interface HeadPorps {
 const cx = classNames.bind(Styles)
 const Header = ({ meta = 'Petty', title = 'Petty' }: HeadPorps) => {
   const [isToggle, setIsToggle] = useState<boolean>(false)
+  useEffect(() => {
+    if (isToggle) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'auto'
+    }
+  }, [isToggle])
   const category: string[] = ['Today', 'Best', 'TimeLine', 'Community']
   return (
     <>
