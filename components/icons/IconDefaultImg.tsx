@@ -104,5 +104,5 @@ const IconDefault = React.memo((props: SVGProps<SVGSVGElement>) => (
     </g>
   </svg>
 ))
-
+IconDefault.displayName = 'IconDefault'
 export default IconDefault
