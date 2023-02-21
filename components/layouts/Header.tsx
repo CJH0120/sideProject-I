@@ -50,13 +50,14 @@ const Header = ({ meta = 'Petty', title = 'Petty' }: HeadPorps) => {
               ))}
             </div>
           </div>
-          <div
-            className={cx('button-wrap')}
-            onClick={() => {
-              setIsToggle(true)
-            }}
-          >
-            <Button icon Classname={cx('button-icon')}>
+          <div className={cx('button-wrap')}>
+            <Button
+              icon
+              Classname={cx('button-icon')}
+              onClick={() => {
+                setIsToggle(true)
+              }}
+            >
               <IconHamburger />
             </Button>
 
