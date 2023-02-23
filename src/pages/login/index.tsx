@@ -10,6 +10,18 @@ const cx = classNames.bind(Style)
 const Login: NextPage = () => {
   useEffect(() => {
     document.body.style.overflow = 'hidden'
+    fetch('./api/v1/auth/login/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: 'test',
+        pw: 'test1234',
+      }),
+    })
+      .then(response => response.json())
+      .then(res => alert(res.message))
   }, [])
   return (
     <section className={cx('login-wrap')}>
