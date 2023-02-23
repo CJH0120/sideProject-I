@@ -14,12 +14,14 @@ const Login: NextPage = () => {
   return (
     <section className={cx('login-wrap')}>
       <div className={cx('login')}>
-        <Link href={'/'} className={cx('login-head')}>
-          <span className={cx('logo')}>
-            <IconLogo className={cx('icon-logo')} />
-          </span>
-          <h1 className={cx('logo-text')}>Petty</h1>
-        </Link>
+        <div className={cx('login-head')}>
+          <Link href={'/'} className={cx('link')}>
+            <span className={cx('logo')}>
+              <IconLogo className={cx('icon-logo')} />
+            </span>
+            <h1 className={cx('logo-text')}>Petty</h1>
+          </Link>
+        </div>
         <div className={cx('login-contnet')}>
           <div className={cx('login-input-wrap')}>
             <div className={cx('login-input')}>
