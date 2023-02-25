@@ -18,7 +18,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       `
               select *
               from Member
-              where userID=? and userPW=?
+              where userId=? and userPw=?
           `,
       [id, pw],
     )
