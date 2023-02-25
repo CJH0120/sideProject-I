@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import jwt from 'jsonwebtoken'
-import { NextHandler } from 'next-connect'
 import MariaDB from '../lib/mariadb'
 import { ApiData } from '../interface'
 
@@ -35,7 +34,7 @@ const core = async (req: NextApiRequest, res: NextApiResponse) => {
       payload = Object.keys(payload).reduce<User>((p, v) => refinePayload(p, v, payload), { id: -1 })
 
       newAccessToken = jwt.sign(payload, process.env.NEXT_PUBLIC_KEY || '', { expiresIn: '1h' })
-      newRefreshToken = jwt.sign(payload, process.env.NEXT_PUBLIC_KEY || '', { expiresIn: '1d' })
+      newRefreshToken = jwt.sign(payload, process.env.NEXT_PUBLIC_KEY || '', { expiresIn: '6h' })
     } catch {
       throw { code: 401, message: '인증 만료' }
     }
@@ -56,7 +55,7 @@ const core = async (req: NextApiRequest, res: NextApiResponse) => {
   const memberList = await mariaDB.query<ApiData.Member[]>(
     `
         select id, userId
-        from member
+        from Member
         where id=?
     `,
     [req.user.id],

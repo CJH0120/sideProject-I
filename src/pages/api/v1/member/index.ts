@@ -18,7 +18,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const memberList = await mariaDB.query<ApiData.Member[]>(
       `
         select id, userId, userPw, userNickName
-        from member
+        from Member
         where id=?
       `,
       [refineId],
