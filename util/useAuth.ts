@@ -13,15 +13,21 @@ const login = async (id: string, pw: string, redirect?: string) =>
     redirect: 'follow',
   })
 
-const ip = async (redirect?: string) =>
-  fetcher(`/api/v1/auth/vistieip`, {
-    method: 'POST',
-    headers: {
-      'cache-control': 'no-cache',
-      pragma: 'no-cache',
-      'Content-Type': 'application/json;charset=utf-8',
-    },
-    body: JSON.stringify({ redirect }),
-    redirect: 'follow',
-  })
-export default () => ({ login, ip })
+const ip = async (redirect?: string) => {
+  fetch('https://geolocation-db.com/json/')
+    .then(v => v.json())
+    .then(res =>
+      fetcher(`/api/v1/auth/vistieip`, {
+        method: 'POST',
+        headers: {
+          'cache-control': 'no-cache',
+          pragma: 'no-cache',
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify({ redirect, ipAdress: res.IPv4 }),
+        redirect: 'follow',
+      }),
+    )
+}
+const GetIp = async () => {}
+export default () => ({ login, ip, GetIp })

@@ -11,6 +11,7 @@ export default function Home() {
   const cx = classNames.bind(styles)
 
   const { ip } = useAuth()
+
   useEffect(() => {
     ip(Router.query.redirect?.toString())
   }, [])
