@@ -18,14 +18,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const memberList = await mariaDB.query<Test[]>(
       `
               select *
-              from member
+              from Member
               where userID=? and userPW=?
           `,
       [id, pw],
     )
     if (!memberList?.length) throw { code: 401, message: '일치하는 계정이 없습니다.' }
 
-    // res.status(200).json({ message: `로그인 테스트 안녕하세요 ${id}님!` })
     res.status(301).redirect('/')
   }
 }
