@@ -68,9 +68,11 @@ const Header = ({ meta = 'Petty', title = 'Petty', Nickname }: HeadPorps) => {
                     로그인
                   </Button>
                 </Link>
-                <Button size="S" border Classname={cx('btn')} color="yellow">
-                  회원가입
-                </Button>
+                <Link href={'/user/new'}>
+                  <Button size="S" border Classname={cx('btn')} color="yellow">
+                    회원가입
+                  </Button>
+                </Link>
               </>
             ) : (
               <div className={cx('user')}>안녕하세요 {Nickname}</div>

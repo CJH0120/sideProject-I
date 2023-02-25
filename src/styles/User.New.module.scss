@@ -1,0 +1,52 @@
+@import './variables.scss';
+
+.page-wrap {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex: 1 0 100%;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  .new-wrap {
+    height: 80%;
+    max-width: 500px;
+    width: 100%;
+    .new-head-wrap {
+      .new-head {
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .logo {
+          font-size: 45px;
+        }
+        .head-text {
+          display: flex;
+          align-items: center;
+          font-size: 45px;
+          height: 100%;
+          margin-left: 10px;
+        }
+      }
+    }
+    .form {
+      width: 100%;
+      margin-top: 60px;
+      padding: 0 40px;
+      height: auto;
+      .form-email-wrap {
+        height: auto;
+        .input-email {
+          input {
+            margin-top: 8px;
+            height: 40px;
+            width: 100%;
+            padding: 0 10px;
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+}
