@@ -22,6 +22,6 @@ export namespace ApiData {
     id: number
     userId: string
     userPw: string
-    userNickName: string
+    nickName: string
   }
 }

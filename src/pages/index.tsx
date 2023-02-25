@@ -12,11 +12,10 @@ export default function Home() {
   const cx = classNames.bind(styles)
 
   const { ip } = useAuth()
-  const { data } = useMember()
   useEffect(() => {
     if (!GetCookie('MangoToken')) ip(Router.query.redirect?.toString())
   }, [])
-  console.log(data)
+
   return (
     <Layout footer header>
       <CardList title="Today" />

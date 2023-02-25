@@ -11,23 +11,22 @@ type LayoutPorps = {
 }
 const Layout = ({ children, footer, header }: LayoutPorps) => {
   const { data, isLoading } = useMember()
+  console.log(data?.nickName)
 
   const cx = classNames.bind(Style)
   return (
     <>
-      {!isLoading ? (
-        header && (
-          <>
-            <Header Nickname={data?.userNickName ?? ''} />
-            <main className={cx('layouts-wrap')}>
-              <div className={cx('layouts-content')}>{children}</div>
-            </main>
-            {footer && <Footer />}
-          </>
-        )
-      ) : (
-        <></>
-      )}
+      {!isLoading
+        ? header && (
+            <>
+              <Header Nickname={data?.nickName ?? ''} />
+              <main className={cx('layouts-wrap')}>
+                <div className={cx('layouts-content')}>{children}</div>
+              </main>
+              {footer && <Footer />}
+            </>
+          )
+        : null}
     </>
   )
 }

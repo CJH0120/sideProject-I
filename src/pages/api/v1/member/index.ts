@@ -13,11 +13,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const refineId = id ?? req.user.id
 
     if (!refineId) throw { code: 400, message: '사용자 정보가 없습니다.' }
-    console.log(refineId)
 
     const memberList = await mariaDB.query<ApiData.Member[]>(
       `
-        select id, userId, userPw, userNickName
+        select id, userId, userPw, nickName
         from Member
         where id=?
       `,

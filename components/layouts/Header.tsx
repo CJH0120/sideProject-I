@@ -16,6 +16,7 @@ interface HeadPorps {
 
 const cx = classNames.bind(Styles)
 const Header = ({ meta = 'Petty', title = 'Petty', Nickname }: HeadPorps) => {
+  console.log(Nickname)
   const [isToggle, setIsToggle] = useState<boolean>(false)
   useEffect(() => {
     if (isToggle) {

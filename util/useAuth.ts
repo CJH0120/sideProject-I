@@ -29,5 +29,5 @@ const ip = async (redirect?: string) => {
       }),
     )
 }
-const GetIp = async () => {}
-export default () => ({ login, ip, GetIp })
+
+export default () => ({ login, ip })
