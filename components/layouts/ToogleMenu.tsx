@@ -9,8 +9,9 @@ const cx = classNames.bind(Style)
 interface ToggleMenuPorps {
   setisToogle: Dispatch<SetStateAction<boolean>>
   isToogle?: boolean
+  nickName: string
 }
-const ToggleMenu = ({ isToogle, setisToogle }: ToggleMenuPorps) => {
+const ToggleMenu = ({ isToogle, setisToogle, nickName }: ToggleMenuPorps) => {
   const DivEL = useRef<HTMLDivElement | null>(null)
   useEffect(() => {
     if (isToogle) {
@@ -40,17 +41,22 @@ const ToggleMenu = ({ isToogle, setisToogle }: ToggleMenuPorps) => {
           </p>
         </div>
         <div className={cx('head-btn')}>
-          <Link href={'/login'}>
-            <Button border color="white" size="S" Classname={cx('btn')}>
-              로그인
-            </Button>
-          </Link>
-
-          <Link href={'/singup'}>
-            <Button border color="yellow" size="S" Classname={cx('btn')}>
-              회원가입
-            </Button>
-          </Link>
+          {!nickName ? (
+            <>
+              <Link href={'/login'}>
+                <Button border color="white" size="S" Classname={cx('btn')}>
+                  로그인
+                </Button>
+              </Link>
+              <Link href={'/singup'}>
+                <Button border color="yellow" size="S" Classname={cx('btn')}>
+                  회원가입
+                </Button>
+              </Link>
+            </>
+          ) : (
+            <div>{nickName}</div>
+          )}
         </div>
       </div>
     </div>

@@ -112,6 +112,11 @@
           font-size: 36px;
         }
       }
+      .user {
+        @media all and (max-width: $media-width) {
+          display: none;
+        }
+      }
     }
   }
 }

@@ -16,7 +16,6 @@ interface HeadPorps {
 
 const cx = classNames.bind(Styles)
 const Header = ({ meta = 'Petty', title = 'Petty', Nickname }: HeadPorps) => {
-  console.log(Nickname)
   const [isToggle, setIsToggle] = useState<boolean>(false)
   useEffect(() => {
     if (isToggle) {
@@ -74,12 +73,12 @@ const Header = ({ meta = 'Petty', title = 'Petty', Nickname }: HeadPorps) => {
                 </Button>
               </>
             ) : (
-              <div>안녕하세요 {Nickname}</div>
+              <div className={cx('user')}>안녕하세요 {Nickname}</div>
             )}
           </div>
         </div>
       </header>
-      {isToggle && <ToggleMenu setisToogle={setIsToggle} isToogle={isToggle} />}
+      {isToggle && <ToggleMenu setisToogle={setIsToggle} isToogle={isToggle} nickName={Nickname ?? ''} />}
     </>
   )
 }
