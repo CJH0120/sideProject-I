@@ -7,14 +7,16 @@ import { useEffect } from 'react'
 import useAuth from 'util/useAuth'
 import { GetCookie } from 'util/cookies'
 import Router from 'next/router'
+import { useMember } from 'util/apiHook'
 export default function Home() {
   const cx = classNames.bind(styles)
 
   const { ip } = useAuth()
-
+  const { data } = useMember()
   useEffect(() => {
-    ip(Router.query.redirect?.toString())
+    if (!GetCookie('MangoToken')) ip(Router.query.redirect?.toString())
   }, [])
+  console.log(data)
   return (
     <Layout footer header>
       <CardList title="Today" />

@@ -26,7 +26,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           [ipAdress],
         )
         .then(() => {
-          res.setHeader('Set-Cookie', [`MangoToken=success; max-age=3600; path=/; httpOnly;`])
+          res.setHeader('Set-Cookie', [`MangoToken=success; max-age=21600; path=/; `])
         })
     }
   }

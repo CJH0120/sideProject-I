@@ -11,10 +11,11 @@ import ToggleMenu from './ToogleMenu'
 interface HeadPorps {
   meta?: string
   title?: string
+  Nickname?: string
 }
 
 const cx = classNames.bind(Styles)
-const Header = ({ meta = 'Petty', title = 'Petty' }: HeadPorps) => {
+const Header = ({ meta = 'Petty', title = 'Petty', Nickname }: HeadPorps) => {
   const [isToggle, setIsToggle] = useState<boolean>(false)
   useEffect(() => {
     if (isToggle) {
@@ -60,15 +61,20 @@ const Header = ({ meta = 'Petty', title = 'Petty' }: HeadPorps) => {
             >
               <IconHamburger />
             </Button>
-
-            <Link href={'/login'}>
-              <Button size="S" border Classname={cx('btn', 'margin')}>
-                로그인
-              </Button>
-            </Link>
-            <Button size="S" border Classname={cx('btn')} color="yellow">
-              회원가입
-            </Button>
+            {!Nickname ? (
+              <>
+                <Link href={'/login'}>
+                  <Button size="S" border Classname={cx('btn', 'margin')}>
+                    로그인
+                  </Button>
+                </Link>
+                <Button size="S" border Classname={cx('btn')} color="yellow">
+                  회원가입
+                </Button>
+              </>
+            ) : (
+              <div>안녕하세요 {Nickname}</div>
+            )}
           </div>
         </div>
       </header>
