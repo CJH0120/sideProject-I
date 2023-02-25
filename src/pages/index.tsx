@@ -4,9 +4,16 @@ import Layout from 'components/layouts/Layouts'
 import CardList from 'components/layouts/CardList'
 import useSWR from 'swr'
 import { useEffect } from 'react'
+import useAuth from 'util/useAuth'
+import { GetCookie } from 'util/cookies'
+import Router from 'next/router'
 export default function Home() {
   const cx = classNames.bind(styles)
-  useEffect(() => {}, [])
+
+  const { ip } = useAuth()
+  useEffect(() => {
+    ip(Router.query.redirect?.toString())
+  }, [])
   return (
     <Layout footer header>
       <CardList title="Today" />

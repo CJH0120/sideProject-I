@@ -13,8 +13,7 @@ interface Test {
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
     const { id, pw } = req.body
-    console.log(id)
-    console.log(pw)
+
     const memberList = await mariaDB.query<Test[]>(
       `
               select *
