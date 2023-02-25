@@ -1,5 +1,7 @@
-import MariaDB from '../../../../../../lib/mariadb'
+import MariaDB from '../../../../../lib/mariadb'
 import { NextApiRequest, NextApiResponse } from 'next'
+import { json } from 'node:stream/consumers'
+import { withCatch } from 'util/withCatch'
 
 const mariaDB = MariaDB.getInstance()
 interface Test {
@@ -13,7 +15,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const { id, pw } = req.body
     console.log(id)
     console.log(pw)
-
     const memberList = await mariaDB.query<Test[]>(
       `
               select *
@@ -24,8 +25,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     )
     if (!memberList?.length) throw { code: 401, message: '일치하는 계정이 없습니다.' }
 
-    res.status(200).json({ message: `로그인 테스트 안녕하세요 ${id}님!` })
+    // res.status(200).json({ message: `로그인 테스트 안녕하세요 ${id}님!` })
+    res.status(301).redirect('/')
   }
 }
 
-export default handler
+export default withCatch(handler)
