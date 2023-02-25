@@ -5,7 +5,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return(
   <SWRConfig
    value={{shouldRetryOnError: false}}>
-  <Component {...pageProps} />;
+  <Component {...pageProps} />
   </SWRConfig>
   )
 }
