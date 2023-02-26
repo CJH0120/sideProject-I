@@ -30,11 +30,15 @@
         }
       }
     }
-    .form {
+    .input-wrap {
       width: 100%;
-      margin-top: 60px;
+      margin: 60px auto 0;
       padding: 0 40px;
-      height: auto;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       .form-email-wrap {
         height: auto;
         .input-email {
