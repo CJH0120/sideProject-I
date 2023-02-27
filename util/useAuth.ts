@@ -29,5 +29,15 @@ const ip = async (redirect?: string) => {
       }),
     )
 }
-
-export default () => ({ login, ip })
+const userTest = async (key: string, value: string) => {
+  fetcher(`/api/v1/user/usertest`, {
+    method: 'POST',
+    headers: {
+      'cache-control': 'no-cache',
+      pragma: 'no-cache',
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+    body: JSON.stringify({ key, value }),
+  })
+}
+export default () => ({ login, ip, userTest })

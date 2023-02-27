@@ -23,14 +23,25 @@
         height: 50px;
         border: 1px solid;
         outline: none;
+        font-size: 18px;
         padding: 0 10px;
+        &:focus {
+          border-color: $main-color;
+        }
       }
       .icons {
         position: absolute;
-        top: 30%;
-        right: 5%;
+        top: 50%;
+        right: 2%;
+        transform: translate(-50%, -50%);
         cursor: pointer;
         display: none;
+        &:focus {
+          display: block;
+        }
+      }
+      & .input:focus + .icons {
+        display: block;
       }
     }
     .error-message {

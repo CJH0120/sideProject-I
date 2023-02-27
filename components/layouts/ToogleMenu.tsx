@@ -44,12 +44,12 @@ const ToggleMenu = ({ isToogle, setisToogle, nickName }: ToggleMenuPorps) => {
           {!nickName ? (
             <>
               <Link href={'/login'}>
-                <Button border color="white" size="S" Classname={cx('btn')}>
+                <Button border color="white" size="L" Classname={cx('btn')}>
                   로그인
                 </Button>
               </Link>
               <Link href={'/singup'}>
-                <Button border color="yellow" size="S" Classname={cx('btn')}>
+                <Button border color="yellow" size="L" Classname={cx('btn')}>
                   회원가입
                 </Button>
               </Link>

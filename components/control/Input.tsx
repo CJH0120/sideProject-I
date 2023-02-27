@@ -2,6 +2,8 @@ import { ChangeEvent, HTMLInputTypeAttribute, forwardRef } from 'react'
 import { InputType } from 'zlib'
 import Style from '@/styles/input.module.scss'
 import classNames from 'classnames/bind'
+import Button from './Button'
+import IconRemove from 'components/icons/iconRemove'
 
 type InputProps = {
   type?: HTMLInputTypeAttribute
@@ -15,7 +17,8 @@ type InputProps = {
   passMessage?: string
   size?: 'S' | 'M' | 'L'
   removeIcon?: boolean
-  iconClick?: (e: any) => void
+  iconClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
+  name: string
 }
 
 const cx = classNames.bind(Style)
@@ -32,7 +35,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       errorMessage,
       passMessage,
       size = 'M',
-      removeIcon = false,
+      removeIcon = true,
+      name,
       iconClick,
     },
     ref,
@@ -49,12 +53,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             placeholder={placeholder}
             value={value}
             ref={ref}
+            name={name}
           />
-          {removeIcon && (
-            <button className={cx('icon')} onClick={iconClick}>
-              icon
-            </button>
-          )}
+          {removeIcon && <Button iconSize={16} icon={IconRemove} Classname={cx('icons')} onClick={iconClick} />}
         </div>
         {errorMessage && <div className={cx('error-message')}>{errorMessage}</div>}
         {passMessage && <div className={cx('pass-message')}>{passMessage}</div>}

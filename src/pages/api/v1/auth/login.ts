@@ -1,6 +1,5 @@
 import MariaDB from '../../../../../lib/mariadb'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { json } from 'node:stream/consumers'
 import { withCatch } from 'util/withCatch'
 import jwt from 'jsonwebtoken'
 const mariaDB = MariaDB.getInstance()

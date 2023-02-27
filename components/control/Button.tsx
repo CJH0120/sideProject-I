@@ -4,22 +4,37 @@ import Styles from '@/styles/Button.module.scss'
 type ButtonProps = {
   border?: boolean
   color?: 'yellow' | 'white'
-  children?: React.ReactNode
   Classname?: string
-  icon?: React.MemoExoticComponent<(props: React.SVGProps<SVGSVGElement>) => JSX.Element>
-  size?: 'S' | 'M' | 'L'
+  size?: 'S' | 'M' | 'L' | 'XL'
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
-}
+} & (
+  | {
+      children: React.ReactNode
+      icon?: never
+      iconSize?: never
+    }
+  | {
+      children?: never
+      icon: React.MemoExoticComponent<(props: React.SVGProps<SVGSVGElement>) => JSX.Element>
+      iconSize: number
+    }
+)
+
 const cx = classNames.bind(Styles)
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ onClick: handleClick = () => {}, icon: Icon, Classname, children, border = false, color = 'white', size = 'S' }, ref) => {
+  ({ onClick: handleClick = () => {}, icon: Icon, iconSize, Classname, children, border = false, color = 'white', size = 'S' }, ref) => {
     const HandleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       handleClick(e)
     }
     return (
-      <button ref={ref} onClick={HandleClick} className={cx('button-wrap', Classname, border && 'border', color, size)}>
+      <button
+        ref={ref}
+        onClick={HandleClick}
+        style={{ height: iconSize, width: iconSize }}
+        className={cx('button-wrap', Classname, border && 'border', color, size)}
+      >
         {children}
-        {!!Icon && <Icon />}
+        {!!Icon && <Icon fontSize={iconSize} />}
       </button>
     )
   },

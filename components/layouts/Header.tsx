@@ -53,23 +53,22 @@ const Header = ({ meta = 'Petty', title = 'Petty', Nickname }: HeadPorps) => {
           </div>
           <div className={cx('button-wrap')}>
             <Button
-              icon
+              icon={IconHamburger}
               Classname={cx('button-icon')}
               onClick={() => {
                 setIsToggle(true)
               }}
-            >
-              <IconHamburger />
-            </Button>
+            />
+
             {!Nickname ? (
               <>
                 <Link href={'/login'}>
-                  <Button size="S" border Classname={cx('btn', 'margin')}>
+                  <Button size="M" border Classname={cx('btn', 'margin')}>
                     로그인
                   </Button>
                 </Link>
                 <Link href={'/user/new'}>
-                  <Button size="S" border Classname={cx('btn')} color="yellow">
+                  <Button size="M" border Classname={cx('btn')} color="yellow">
                     회원가입
                   </Button>
                 </Link>
