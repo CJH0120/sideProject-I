@@ -29,7 +29,7 @@ const ip = async (redirect?: string) => {
       }),
     )
 }
-const userTest = async (key: string, value: string) => {
+const userTest = async (key: string, value: string, redirect?: string) =>
   fetcher(`/api/v1/user/usertest`, {
     method: 'POST',
     headers: {
@@ -38,6 +38,7 @@ const userTest = async (key: string, value: string) => {
       'Content-Type': 'application/json;charset=utf-8',
     },
     body: JSON.stringify({ key, value }),
+    redirect: 'follow',
   })
-}
+
 export default () => ({ login, ip, userTest })

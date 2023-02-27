@@ -19,8 +19,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             `,
       [value],
     )
-    if (memberTest.length > 0) throw { code: 401, message: '일치하는 계정이 없습니다.' }
 
+    if (memberTest.length > 0) throw { code: 401, message: '중복된 아이디입니다.' }
     res.status(201).json(memberTest.length)
   }
 }

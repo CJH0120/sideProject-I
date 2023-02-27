@@ -53,6 +53,7 @@ const Header = ({ meta = 'Petty', title = 'Petty', Nickname }: HeadPorps) => {
           </div>
           <div className={cx('button-wrap')}>
             <Button
+              iconSize={36}
               icon={IconHamburger}
               Classname={cx('button-icon')}
               onClick={() => {

@@ -2,6 +2,7 @@ import Style from '@/styles/User.New.module.scss'
 import classNames from 'classnames/bind'
 import Input from 'components/control/Input'
 import IconLogo from 'components/icons/IconLogo'
+import { Router } from 'next/router'
 import { RefObject, HTMLInputTypeAttribute, useRef, useState } from 'react'
 import useAuth from 'util/useAuth'
 const cx = classNames.bind(Style)
@@ -23,7 +24,7 @@ const New = () => {
   const [userSate, setUserState] = useState<NewState>({ email: '', nickName: '', pw: '', pwre: '' })
   const handlerUserTest = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target
-    await userTest(name, value).then(res => console.log(res))
+    await userTest(name, value).catch(err => alert(err.message))
   }
   const list: list[] = [
     { label: '이메일', type: 'text', name: 'email', onBluer: handlerUserTest },
@@ -47,7 +48,7 @@ const New = () => {
         </div>
         <div className={cx('input-wrap')}>
           {list.map(v => (
-            <Input labelText={v.label} type={v.type} ref={test} onChange={handlerUserState} name={v.name} onBlur={v.onBluer} />
+            <Input labelText={v.label} type={v.type} ref={test} onChange={handlerUserState} name={v.name} onBlur={v.onBluer} key={v.name} />
           ))}
         </div>
       </div>

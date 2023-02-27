@@ -65,7 +65,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 )
 
 export default Input
-
+Input.displayName = 'Input'
 // const Input2 = forwardRef<HTMLInputElement,InputProps<T,E,P extends boolean>>(({ ...props }:InputProps<T,E,P>, ref) => {
 //   return <input ref={ref} className={cx('input')} {...props} />
 // })

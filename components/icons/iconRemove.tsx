@@ -11,3 +11,4 @@ const IconRemove = React.memo((props: SVGProps<SVGSVGElement>) => (
 ))
 
 export default IconRemove
+IconRemove.displayName = 'dasdsadssad'
