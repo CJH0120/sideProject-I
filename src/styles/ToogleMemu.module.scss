@@ -48,10 +48,11 @@
         }
       }
     }
+
     .head-btn {
       display: flex;
       width: 100%;
-      margin-top: 20px;
+      margin-top: 10px;
       justify-content: space-between;
       .btn {
         width: 130px;
@@ -63,8 +64,44 @@
         font-weight: 700;
       }
     }
+
+    .login-default {
+      width: 100%;
+      .default-head {
+        padding: 10px 0;
+        border-bottom: 1px solid #f1f3f5;
+        .image-nick {
+          display: flex;
+          align-items: center;
+          margin-bottom: 15px;
+          .image {
+            height: 64px;
+            width: 64px;
+            border-radius: 8px;
+            overflow: hidden;
+            .icon {
+              font-size: 64px;
+            }
+          }
+          .nickName {
+            font-size: 20px;
+            margin-bottom: 5px;
+            margin-left: 15px;
+          }
+        }
+
+        .btn-wrap {
+          height: 56px;
+          display: grid;
+          align-items: center;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 15px;
+        }
+      }
+    }
   }
 }
+
 @keyframes fa {
   from {
     transform: translateX(100%);

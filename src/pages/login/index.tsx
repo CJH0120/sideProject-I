@@ -20,6 +20,7 @@ const Login: NextPage = () => {
   const IdEl = useRef<HTMLInputElement>(null)
   const PwEl = useRef<HTMLInputElement>(null)
   const EmailRegex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}')
+  const InputBox = [{}]
   const handelLogin = async () => {
     if (EmailRegex.test(id)) {
       IdEl.current?.focus()
@@ -72,7 +73,7 @@ const Login: NextPage = () => {
             로그인
           </Button>
           <Button Classname={cx('btn')} border color="white">
-            회원가입
+            <Link href={'/user/new'}> 회원가입</Link>
           </Button>
         </div>
       </div>

@@ -54,7 +54,7 @@
         align-items: center;
         height: 45px;
         font-weight: 200;
-        width: auto;
+        width: 395px;
         margin-left: 80px;
         flex-wrap: wrap;
         gap: 30px;
@@ -113,6 +113,30 @@
         }
       }
       .user {
+        gap: 10px;
+        height: 48px;
+        width: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        .icons {
+          &:hover {
+            color: $main-color;
+          }
+        }
+        .nickName {
+          width: auto;
+          max-width: 130px;
+          font-size: 16px;
+          font-weight: 700;
+          &:hover {
+            color: $main-color;
+          }
+        }
+        .btn {
+          width: 100px;
+          margin-left: 10px;
+        }
         @media all and (max-width: $media-width) {
           display: none;
         }

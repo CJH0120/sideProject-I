@@ -19,6 +19,7 @@ type InputProps = {
   removeIcon?: boolean
   iconClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
   name: string
+  ref?: any
 }
 
 const cx = classNames.bind(Style)

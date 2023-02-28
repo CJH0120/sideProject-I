@@ -4,6 +4,7 @@ import { Dispatch, LegacyRef, SetStateAction, useEffect, useRef } from 'react'
 import IconDefault from 'components/icons/IconDefaultImg'
 import Link from 'next/link'
 import Button from 'components/control/Button'
+import useAuth from 'util/useAuth'
 const cx = classNames.bind(Style)
 
 interface ToggleMenuPorps {
@@ -13,6 +14,7 @@ interface ToggleMenuPorps {
 }
 const ToggleMenu = ({ isToogle, setisToogle, nickName }: ToggleMenuPorps) => {
   const DivEL = useRef<HTMLDivElement | null>(null)
+  const { logout } = useAuth()
   useEffect(() => {
     if (isToogle) {
       document.body.style.overflow = 'hidden'
@@ -24,6 +26,9 @@ const ToggleMenu = ({ isToogle, setisToogle, nickName }: ToggleMenuPorps) => {
     if (isToogle && !DivEL.current?.contains(e.target as HTMLElement)) {
       setisToogle(false)
     }
+  }
+  const handelLogout = async () => {
+    await logout()
   }
   useEffect(() => {
     window.addEventListener('mousedown', handleCloseModal)
@@ -48,14 +53,31 @@ const ToggleMenu = ({ isToogle, setisToogle, nickName }: ToggleMenuPorps) => {
                   로그인
                 </Button>
               </Link>
-              <Link href={'/singup'}>
+              <Link href={'/user/new'}>
                 <Button border color="yellow" size="L" Classname={cx('btn')}>
                   회원가입
                 </Button>
               </Link>
             </>
           ) : (
-            <div>{nickName}</div>
+            <div className={cx('login-default')}>
+              <div className={cx('default-head')}>
+                <div className={cx('image-nick')}>
+                  <div className={cx('image')}>
+                    <IconDefault className={cx('icon')} />
+                  </div>
+                  <p className={cx('nickName')}>{nickName}</p>
+                </div>
+                <div className={cx('btn-wrap')}>
+                  <Button border size="L" color="yellow">
+                    마아페이지
+                  </Button>
+                  <Button border size="L" onClick={handelLogout}>
+                    로그아웃
+                  </Button>
+                </div>
+              </div>
+            </div>
           )}
         </div>
       </div>

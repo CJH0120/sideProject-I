@@ -29,6 +29,18 @@ const ip = async (redirect?: string) => {
       }),
     )
 }
+const logout = async (redirect?: string) => {
+  fetcher(`/api/v1/auth/logout`, {
+    method: 'POST',
+    headers: {
+      'cache-control': 'no-cache',
+      pragma: 'no-cache',
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+    body: JSON.stringify({ redirect }),
+    redirect: 'follow',
+  })
+}
 const userTest = async (key: string, value: string, redirect?: string) =>
   fetcher(`/api/v1/user/usertest`, {
     method: 'POST',
@@ -41,4 +53,4 @@ const userTest = async (key: string, value: string, redirect?: string) =>
     redirect: 'follow',
   })
 
-export default () => ({ login, ip, userTest })
+export default () => ({ login, ip, userTest, logout })

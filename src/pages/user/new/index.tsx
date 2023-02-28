@@ -2,8 +2,9 @@ import Style from '@/styles/User.New.module.scss'
 import classNames from 'classnames/bind'
 import Input from 'components/control/Input'
 import IconLogo from 'components/icons/IconLogo'
+import Link from 'next/link'
 import { Router } from 'next/router'
-import { RefObject, HTMLInputTypeAttribute, useRef, useState } from 'react'
+import { MutableRefObject, HTMLInputTypeAttribute, useRef, useState } from 'react'
 import useAuth from 'util/useAuth'
 const cx = classNames.bind(Style)
 interface list {
@@ -20,11 +21,10 @@ interface NewState {
 }
 const New = () => {
   const { userTest } = useAuth()
-  const test = useRef<HTMLInputElement | null>(null)
   const [userSate, setUserState] = useState<NewState>({ email: '', nickName: '', pw: '', pwre: '' })
   const handlerUserTest = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target
-    await userTest(name, value).catch(err => alert(err.message))
+    await userTest(name, value).catch(() => {})
   }
   const list: list[] = [
     { label: '이메일', type: 'text', name: 'email', onBluer: handlerUserTest },
@@ -41,14 +41,16 @@ const New = () => {
     <div className={cx('page-wrap')}>
       <div className={cx('new-wrap')}>
         <div className={cx('new-head-wrap')}>
-          <div className={cx('new-head')}>
-            <IconLogo className={cx('logo')} />
-            <p className={cx('head-text')}>Petty</p>
-          </div>
+          <Link href={'/'}>
+            <div className={cx('new-head')}>
+              <IconLogo className={cx('logo')} />
+              <p className={cx('head-text')}>Petty</p>
+            </div>
+          </Link>
         </div>
         <div className={cx('input-wrap')}>
-          {list.map(v => (
-            <Input labelText={v.label} type={v.type} ref={test} onChange={handlerUserState} name={v.name} onBlur={v.onBluer} key={v.name} />
+          {list.map((v, idx) => (
+            <Input labelText={v.label} type={v.type} name={v.name} onBlur={v.onBluer} key={v.name} />
           ))}
         </div>
       </div>

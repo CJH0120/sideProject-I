@@ -7,6 +7,10 @@ import Link from 'next/link'
 import IconHamburger from 'components/icons/IconHamburger'
 import { useEffect, useState } from 'react'
 import ToggleMenu from './ToogleMenu'
+import IconPin from 'components/icons/IconPin'
+import IconPin2 from 'components/icons/IconPin2'
+import IconHeart from 'components/icons/IconHeart'
+import IconArrowDown from 'components/icons/IconArrowDown'
 
 interface HeadPorps {
   meta?: string
@@ -64,18 +68,27 @@ const Header = ({ meta = 'Petty', title = 'Petty', Nickname }: HeadPorps) => {
             {!Nickname ? (
               <>
                 <Link href={'/login'}>
-                  <Button size="M" border Classname={cx('btn', 'margin')}>
+                  <Button size="L" border Classname={cx('btn', 'margin')}>
                     로그인
                   </Button>
                 </Link>
                 <Link href={'/user/new'}>
-                  <Button size="M" border Classname={cx('btn')} color="yellow">
-                    회원가입
+                  <Button size="L" border Classname={cx('btn')} color="yellow">
+                    <Link href={'user/new'}> 회원가입</Link>
                   </Button>
                 </Link>
               </>
             ) : (
-              <div className={cx('user')}>안녕하세요 {Nickname}</div>
+              <div className={cx('user')}>
+                <Button icon={IconHeart} iconSize={24} Classname={cx('icons')} />
+                <Button icon={IconPin2} iconSize={24} Classname={cx('icons')} />
+                <Button size="L" Classname={cx('nickName')}>
+                  {Nickname} <IconArrowDown />
+                </Button>
+                <Button size="L" color="yellow" border Classname={cx('btn')}>
+                  글쓰기
+                </Button>
+              </div>
             )}
           </div>
         </div>

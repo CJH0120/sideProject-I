@@ -30,7 +30,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         onClick={HandleClick}
-        style={{ height: iconSize, width: iconSize }}
+        style={{ height: iconSize && iconSize + 5, width: iconSize && iconSize + 5 }}
         className={cx('button-wrap', Classname, border && 'border', color, size)}
       >
         {children}
