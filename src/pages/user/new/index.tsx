@@ -35,8 +35,10 @@ const New = () => {
     }
   }
   useEffect(() => {
-    if (errState && userSate.email && userSate.nickName && userSate.pw.length && userSate.pwRe.length > 6) {
+    if (errState && userSate.email && userSate.nickName && userSate.pw.length > 5 && userSate.pw === userSate.pwRe) {
       setAllState(r => true)
+    } else {
+      setAllState(r => false)
     }
   }, [errState, userSate])
   const handlerUserTest = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -76,8 +78,6 @@ const New = () => {
         : setErrState(errstate => ({ ...errstate, pwRe: false })))
     !userSate.pw && setErrState(errstate => ({ ...errstate, pw: false }))
     !userSate.pwRe && setErrState(errstate => ({ ...errstate, pwRe: false }))
-    !userSate.email && setErrState(errstate => ({ ...errstate, email: false }))
-    !userSate.nickName && setErrState(errstate => ({ ...errstate, nickName: false }))
   }, [userSate])
 
   const IconClick = (name?: string, idx?: number) => {
