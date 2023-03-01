@@ -26,13 +26,19 @@ const New = () => {
   const [errState, setErrState] = useState<errState>({ email: false, nickName: false, pw: false, pwRe: false })
   const [userSate, setUserState] = useState<NewState>({ email: '', nickName: '', pw: '', pwRe: '' })
   const RefArr = useRef<HTMLInputElement[]>([])
+  const [allState, setAllState] = useState<boolean>(false)
   const HandleSign = async () => {
-    if (!errState && userSate) {
+    if (allState) {
       userNew(userSate?.email, userSate.pw, userSate.nickName).then(() => {
         alert('회원가입 완료')
       })
     }
   }
+  useEffect(() => {
+    if (errState && userSate.email && userSate.nickName && userSate.pw && userSate.pwRe) {
+      setAllState(r => true)
+    }
+  }, [errState, userSate])
   const handlerUserTest = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target
     let regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i
@@ -44,8 +50,6 @@ const New = () => {
         .finally(() => {
           setUserState({ ...userSate, [name]: value })
         })
-    } else {
-      setErrState(errstate => ({ ...errstate, [name]: true }))
     }
   }
   const handlerUserState = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -83,7 +87,7 @@ const New = () => {
       label: '이메일',
       type: 'text',
       name: 'email',
-      onBlur: handlerUserTest,
+      onChange: handlerUserTest,
       errorState: errState.email ?? false,
       errorMessage: '형식에 맞지 않거나 중복된 이메일 주소 입니다',
       value: userSate.email,
@@ -96,7 +100,7 @@ const New = () => {
       label: '닉네임',
       type: 'text',
       name: 'nickName',
-      onBlur: handlerUserTest,
+      onChange: handlerUserTest,
       placeholder: '2글자 이상 입력해주세요',
       errorState: errState.nickName ?? false,
       errorMessage: '형식에 맞지 않거나 중복된 닉네임 입니다.',
@@ -169,7 +173,7 @@ const New = () => {
           ))}
         </div>
         <div className={cx('btn-wrap')}>
-          <Button border size="XL" color="yellow" onClick={HandleSign}>
+          <Button border size="XL" color={allState ? 'yellow' : 'disable'} onClick={HandleSign}>
             가입하기
           </Button>
         </div>

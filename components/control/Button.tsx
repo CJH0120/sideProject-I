@@ -3,7 +3,7 @@ import React, { SVGProps, forwardRef } from 'react'
 import Styles from '@/styles/Button.module.scss'
 type ButtonProps = {
   border?: boolean
-  color?: 'yellow' | 'white'
+  color?: 'yellow' | 'white' | 'disable'
   Classname?: string
   size?: 'S' | 'M' | 'L' | 'XL'
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
