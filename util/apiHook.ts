@@ -20,7 +20,7 @@ const qs = (obj: { [key: string]: any }) => {
   if (tmp) return '?' + tmp
   return ''
 }
-//로그인
+
 export const useMember = <Data = ApiData.Member, Error = any>(
   redirect?: string,
   id?: number,

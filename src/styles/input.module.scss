@@ -5,7 +5,6 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
   &.M {
     .label {
       display: flex;
@@ -14,6 +13,9 @@
       align-items: center;
       justify-content: flex-start;
       margin-bottom: 8px;
+      &.act {
+        color: $main-color;
+      }
     }
     .input-wrap {
       height: auto;
@@ -21,35 +23,43 @@
       .input {
         width: 100%;
         height: 50px;
+        border-radius: 8px;
         border: 1px solid;
         outline: none;
         font-size: 18px;
         padding: 0 10px;
-        &:focus {
+        &.act {
           border-color: $main-color;
         }
+        &::placeholder {
+          font-size: 13px;
+        }
       }
+
       .icons {
+        background-color: transparent;
+        display: flex;
         position: absolute;
         top: 50%;
-        right: 2%;
+        right: 1%;
         transform: translate(-50%, -50%);
         cursor: pointer;
         display: none;
-        &:focus {
+        &.act {
           display: block;
         }
-      }
-      & .input:focus + .icons {
-        display: block;
       }
     }
     .error-message {
       font-size: 16px;
-      color: red;
+      color: #ff4400;
+      font-weight: 700;
       margin: 6px 0px;
       display: flex;
       align-items: center;
+      @media all and (max-width: $media-width) {
+        font-size: 15px;
+      }
     }
   }
 }

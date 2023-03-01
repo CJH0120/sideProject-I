@@ -74,7 +74,7 @@ const Header = ({ meta = 'Petty', title = 'Petty', Nickname }: HeadPorps) => {
                 </Link>
                 <Link href={'/user/new'}>
                   <Button size="L" border Classname={cx('btn')} color="yellow">
-                    <Link href={'user/new'}> 회원가입</Link>
+                    회원가입
                   </Button>
                 </Link>
               </>

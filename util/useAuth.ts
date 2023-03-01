@@ -53,4 +53,16 @@ const userTest = async (key: string, value: string, redirect?: string) =>
     redirect: 'follow',
   })
 
-export default () => ({ login, ip, userTest, logout })
+const userNew = async (email: string, pw: string, nickName: string, redirect?: string) =>
+  fetcher(`/api/v1/auth/signup`, {
+    method: 'POST',
+    headers: {
+      'cache-control': 'no-cache',
+      pragma: 'no-cache',
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+    body: JSON.stringify({ email, pw, nickName, redirect }),
+    redirect: 'follow',
+  })
+
+export default () => ({ login, ip, userTest, logout, userNew })
