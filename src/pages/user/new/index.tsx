@@ -35,7 +35,7 @@ const New = () => {
     }
   }
   useEffect(() => {
-    if (errState && userSate.email && userSate.nickName && userSate.pw && userSate.pwRe) {
+    if (errState && userSate.email && userSate.nickName && userSate.pw.length && userSate.pwRe.length > 6) {
       setAllState(r => true)
     }
   }, [errState, userSate])
@@ -50,6 +50,8 @@ const New = () => {
         .finally(() => {
           setUserState({ ...userSate, [name]: value })
         })
+    } else {
+      setErrState(errstate => ({ ...errstate, [name]: true }))
     }
   }
   const handlerUserState = (e: React.ChangeEvent<HTMLInputElement>) => {
