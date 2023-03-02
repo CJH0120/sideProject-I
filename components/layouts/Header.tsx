@@ -12,6 +12,7 @@ import IconPin2 from 'components/icons/IconPin2'
 import IconHeart from 'components/icons/IconHeart'
 import IconArrowDown from 'components/icons/IconArrowDown'
 import DropDown, { DropDownPros, ListProps } from 'components/control/DropDown'
+import useAuth from 'util/useAuth'
 
 interface HeadPorps {
   meta?: string
@@ -34,7 +35,11 @@ const Header = ({ meta = 'Petty', title = 'Petty', Nickname }: HeadPorps) => {
   const handleDropDown=(e:React.MouseEvent)=>{
     setdropDown(dropDown=>!dropDown)
   }
-  const LoginList:ListProps[]=[{link:"",list:"마이페이지"},{link:"",list:"공지사항"},{link:"",list:"로그아웃"}]
+const {logout} = useAuth()
+  const Handlelogout= async()=>{
+    await  logout()
+  }
+  const LoginList:ListProps[]=[{link:"",list:"마이페이지"},{link:"",list:"공지사항"},{link:"",list:"로그아웃",onclik:Handlelogout}]
   return (
     <>
       <Head>
