@@ -129,9 +129,14 @@
           max-width: 130px;
           font-size: 16px;
           font-weight: 700;
-          &:hover {
+          position: relative;
+          &.act{
             color: $main-color;
+            &:active{
+              background: none;
+            }
           }
+
         }
         .btn {
           width: 100px;

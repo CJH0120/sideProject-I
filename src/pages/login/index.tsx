@@ -3,7 +3,7 @@ import classNames from 'classnames/bind'
 import { NextPage } from 'next'
 import IconLogo from 'components/icons/IconLogo'
 import Button from 'components/control/Button'
-import { useEffect, useRef, useState } from 'react'
+import { ReactEventHandler, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import useAuth from 'util/useAuth'
 import { useRouter } from 'next/router'
@@ -20,15 +20,15 @@ const Login: NextPage = () => {
   const IdEl = useRef<HTMLInputElement>(null)
   const PwEl = useRef<HTMLInputElement>(null)
   const EmailRegex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}')
-  const InputBox = [{}]
   const handelLogin = async () => {
-    if (EmailRegex.test(id)) {
+    if (!EmailRegex.test(id)) {
       IdEl.current?.focus()
-      alert('이메일 형식으로 ')
+      alert('이메일 형식으로 입력하세요 ')
       return
     }
     if (!pw) {
       PwEl.current?.focus()
+      alert("비밀번호를 입력하세요.")
       return
     }
     await login(id, pw, router.query.redirect?.toString()).catch(err => alert(err.message))
@@ -39,8 +39,10 @@ const Login: NextPage = () => {
   const handelChangePw = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPw(e.currentTarget.value)
   }
+  const handleLogin=(e: React.KeyboardEvent<HTMLElement>)=>{
+    if(e.key==="Enter")handelLogin()} 
   return (
-    <section className={cx('login-wrap')}>
+    <section className={cx('login-wrap')} onKeyDown={handleLogin}>
       <div className={cx('login')}>
         <div className={cx('login-head')}>
           <Link href={'/'} className={cx('link')}>

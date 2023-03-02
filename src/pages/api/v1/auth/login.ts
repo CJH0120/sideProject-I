@@ -20,6 +20,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           `,
       [id, pw],
     )
+      console.log(memberList?.length)
     if (!memberList?.length) throw { code: 401, message: '일치하는 계정이 없습니다.' }
     const accessToken = jwt.sign({ ...memberList[0] }, process.env.NEXT_PUBLIC_KEY || '', { expiresIn: '1h' })
     const refreshToken = jwt.sign({ ...memberList[0] }, process.env.NEXT_PUBLIC_KEY || '', { expiresIn: '1d' })

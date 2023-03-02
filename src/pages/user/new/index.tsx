@@ -60,22 +60,15 @@ const New = () => {
     const { value, name } = e.target
     if (name === 'pw') {
       let regPass = /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,20}$/
-      !regPass.test(value)
-        ? setErrState(errstate => ({ ...errstate, [name]: true }))
-        : setErrState(errstate => ({ ...errstate, [name]: false }))
-    } else if (name === 'pwRe')
-      userSate.pw !== value
-        ? setErrState(errstate => ({ ...errstate, [name]: true }))
-        : setErrState(errstate => ({ ...errstate, [name]: false }))
+      setErrState(errstate => ({ ...errstate, [name]: name === 'pw' ? !regPass.test(value) : userSate.pw !== value }))
+    }
 
     // setUserState({ [name]: value })
     setUserState(userstae => ({ ...userstae, [name]: value }))
   }
   useEffect(() => {
     userSate.pwRe &&
-      (userSate.pw !== userSate.pwRe
-        ? setErrState(errstate => ({ ...errstate, pwRe: true }))
-        : setErrState(errstate => ({ ...errstate, pwRe: false })))
+    setErrState(errState=>({...errState, pwRe: userSate.pw !== userSate.pwRe  }))
     !userSate.pw && setErrState(errstate => ({ ...errstate, pw: false }))
     !userSate.pwRe && setErrState(errstate => ({ ...errstate, pwRe: false }))
   }, [userSate])

@@ -1,0 +1,41 @@
+@import './variables.scss';
+.dropdown-wrap{
+    height: auto;
+    border: 1px solid $black-10;
+    z-index: 999;
+    background: $white;
+    position: absolute;
+    top: 100%;
+    box-shadow:  0 1px 2px 0 rgba(0,0,0,.1);;
+.dropdown-content{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $black-10;
+    &:hover{
+        color:$main-color;
+    }
+}
+&.S{
+    width: 200px;
+}
+&.M{
+    width: 400px;
+}
+&.L{
+    width: 600px;
+}
+
+
+
+animation: fadein 0.3s ease-in-out;
+@keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+  }
+}

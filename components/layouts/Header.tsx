@@ -5,12 +5,13 @@ import IconLogo from 'components/icons/IconLogo'
 import Button from 'components/control/Button'
 import Link from 'next/link'
 import IconHamburger from 'components/icons/IconHamburger'
-import { useEffect, useState } from 'react'
+import { MouseEvent, useEffect, useState } from 'react'
 import ToggleMenu from './ToogleMenu'
 import IconPin from 'components/icons/IconPin'
 import IconPin2 from 'components/icons/IconPin2'
 import IconHeart from 'components/icons/IconHeart'
 import IconArrowDown from 'components/icons/IconArrowDown'
+import DropDown, { DropDownPros, ListProps } from 'components/control/DropDown'
 
 interface HeadPorps {
   meta?: string
@@ -29,6 +30,11 @@ const Header = ({ meta = 'Petty', title = 'Petty', Nickname }: HeadPorps) => {
     }
   }, [isToggle])
   const category: string[] = ['Today', 'Best', 'TimeLine', 'Community']
+  const [dropDown,setdropDown] =useState<boolean>(false)
+  const handleDropDown=(e:React.MouseEvent)=>{
+    setdropDown(dropDown=>!dropDown)
+  }
+  const LoginList:ListProps[]=[{link:"",list:"마이페이지"},{link:"",list:"공지사항"},{link:"",list:"로그아웃"}]
   return (
     <>
       <Head>
@@ -82,8 +88,9 @@ const Header = ({ meta = 'Petty', title = 'Petty', Nickname }: HeadPorps) => {
               <div className={cx('user')}>
                 <Button icon={IconHeart} iconSize={24} Classname={cx('icons')} />
                 <Button icon={IconPin2} iconSize={24} Classname={cx('icons')} />
-                <Button size="L" Classname={cx('nickName')}>
+                <Button size="L" Classname={cx('nickName',dropDown &&"act")} onClick={handleDropDown}>
                   {Nickname} <IconArrowDown />
+                  {dropDown &&  <DropDown list={LoginList} size="S" />  }
                 </Button>
                 <Button size="L" color="yellow" border Classname={cx('btn')}>
                   글쓰기
