@@ -34,7 +34,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       errorMessage,
       passMessage,
       size = 'M',
-      removeIcon = true,
+      removeIcon = false,
       name,
       iconClick,
       errorState,
@@ -43,20 +43,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
   ) => {
     const [isClick, setIsClick] = useState<boolean>(false)
     const DivEl = useRef<HTMLDivElement>(null)
-
-    const handleInput = ({ target }: MouseEvent) => {
-      if (!isClick && DivEl.current?.contains(target as HTMLDivElement)) setIsClick(true)
-      else if (isClick && DivEl.current?.contains(target as HTMLDivElement)) setIsClick(true)
-      else {
-        setIsClick(false)
-      }
-    }
-    useEffect(() => {
-      window.addEventListener('click', handleInput)
-      return () => {
-        window.removeEventListener('click', handleInput)
-      }
-    }, [])
 
     return (
       <div className={cx('input-wrapper', size, className)} ref={DivEl}>
@@ -70,8 +56,15 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             type={type}
             id={name}
             className={cx('input', isClick && 'act')}
-            onBlur={onBlur}
+            onBlur={() => {
+              setIsClick(false)
+
+              onBlur
+            }}
             onChange={onChange}
+            onFocus={() => {
+              setIsClick(true)
+            }}
             placeholder={placeholder}
             defaultValue={value}
             ref={ref}

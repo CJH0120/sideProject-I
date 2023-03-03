@@ -7,42 +7,62 @@ import { ReactEventHandler, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import useAuth from 'util/useAuth'
 import { useRouter } from 'next/router'
+import Input, { InputProps } from 'components/control/Input'
 const cx = classNames.bind(Style)
-
+interface LoginType {
+  email: string
+  pw: string
+}
 const Login: NextPage = () => {
   const router = useRouter()
   const { login } = useAuth()
   useEffect(() => {
     document.body.style.overflow = 'hidden'
   }, [])
-  const [id, setId] = useState<string>('')
-  const [pw, setPw] = useState<string>('')
-  const IdEl = useRef<HTMLInputElement>(null)
-  const PwEl = useRef<HTMLInputElement>(null)
   const EmailRegex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}')
-  const handelLogin = async () => {
-    if (!EmailRegex.test(id)) {
-      IdEl.current?.focus()
-      alert('이메일 형식으로 입력하세요 ')
+  const [loginState, setLoginState] = useState<LoginType>({ email: '', pw: '' })
+  const LoginRef = useRef<HTMLInputElement[]>([])
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, name } = e.target
+    setLoginState(state => ({ ...state, [name]: value }))
+  }
+
+  const InputList: InputProps[] = [
+    {
+      name: 'email',
+      type: 'text',
+      label: '이메일 | 닉네임',
+      placeholder: '가입하신 이메일 또는 닉네임을 입력해주세요',
+      value: loginState.email,
+      onChange: handleChange,
+    },
+    {
+      name: 'pw',
+      type: 'password',
+      label: '비밀번호',
+      placeholder: '가입하신 비밀번호를 입력하세요',
+      value: loginState.pw,
+      onChange: handleChange,
+    },
+  ]
+
+  const handleLogin = async () => {
+    if (!loginState.email) {
+      LoginRef.current[0].focus()
       return
     }
-    if (!pw) {
-      PwEl.current?.focus()
-      alert("비밀번호를 입력하세요.")
+    if (!loginState.pw) {
+      LoginRef.current[1].focus()
       return
     }
-    await login(id, pw, router.query.redirect?.toString()).catch(err => alert(err.message))
+    await login(loginState.email, loginState.pw, router.query.redirect?.toString()).catch(err => alert(err.message))
   }
-  const handelChangeId = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setId(e.currentTarget.value)
+
+  const handlerLogin = (e: React.KeyboardEvent<HTMLElement>) => {
+    if (e.key === 'Enter') handleLogin()
   }
-  const handelChangePw = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPw(e.currentTarget.value)
-  }
-  const handleLogin=(e: React.KeyboardEvent<HTMLElement>)=>{
-    if(e.key==="Enter")handelLogin()} 
   return (
-    <section className={cx('login-wrap')} onKeyDown={handleLogin}>
+    <section className={cx('login-wrap')} onKeyDown={handlerLogin}>
       <div className={cx('login')}>
         <div className={cx('login-head')}>
           <Link href={'/'} className={cx('link')}>
@@ -55,28 +75,36 @@ const Login: NextPage = () => {
         <div className={cx('login-contnet')}>
           <div className={cx('login-input-wrap')}>
             <div className={cx('login-input')}>
-              <label className={cx('label-wrap')} htmlFor="inputId">
-                이메일
-              </label>
-
-              <input type={'text'} placeholder="이메일" className={cx('input')} id="inputId" ref={IdEl} onChange={handelChangeId} />
-            </div>
-            <div className={cx('login-input', 'p')}>
-              <label className={cx('label-wrap')} htmlFor="inputpw">
-                비밀번호
-              </label>
-              <input type={'password'} placeholder="비밀번호" id="inputpw" className={cx('input')} ref={PwEl} onChange={handelChangePw} />
+              {InputList.map((v, idx) => (
+                <Input
+                  name={v.name}
+                  key={v.name}
+                  type={v.type}
+                  value={v.value}
+                  label={v.label}
+                  placeholder={v.placeholder}
+                  className={cx('test')}
+                  onChange={v.onChange}
+                  ref={el => {
+                    if (el === null) return null
+                    LoginRef.current[idx] = el
+                    return LoginRef
+                  }}
+                />
+              ))}
             </div>
           </div>
         </div>
         <div className={cx('find')}>뭐찾고 뭐찾고</div>
         <div className={cx('button-wrap')}>
-          <Button Classname={cx('btn')} border color="yellow" onClick={handelLogin}>
+          <Button Classname={cx('btn')} border color="yellow" onClick={handleLogin}>
             로그인
           </Button>
-          <Button Classname={cx('btn')} border color="white">
-            <Link href={'/user/new'}> 회원가입</Link>
-          </Button>
+          <Link href={'/user/new'} className={cx('a')}>
+            <Button Classname={cx('btn')} border color="white">
+              회원가입
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

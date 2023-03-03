@@ -13,7 +13,7 @@ const login = async (id: string, pw: string, redirect?: string) =>
     redirect: 'follow',
   })
 
-const ip = async (redirect?: string) => {
+const ip = async (redirect?: string) =>
   fetch('https://geolocation-db.com/json/')
     .then(v => v.json())
     .then(res =>
@@ -28,7 +28,7 @@ const ip = async (redirect?: string) => {
         redirect: 'follow',
       }),
     )
-}
+
 const logout = async (redirect?: string) => {
   fetcher(`/api/v1/auth/logout`, {
     method: 'POST',
@@ -64,5 +64,17 @@ const userNew = async (email: string, pw: string, nickName: string, redirect?: s
     body: JSON.stringify({ email, pw, nickName, redirect }),
     redirect: 'follow',
   })
+const mailTest = async (key: string, redirect?: string) =>
+  fetcher(`/api/v1/auth/email`, {
+    method: 'POST',
+    headers: {
+      'cache-control': 'no-cache',
+      pragma: 'no-cache',
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+    body: JSON.stringify({ key, redirect }),
+    redirect: 'follow',
+  })
 
-export default () => ({ login, ip, userTest, logout, userNew })
+// eslint-disable-next-line import/no-anonymous-default-export
+export default () => ({ login, ip, userTest, logout, userNew, mailTest })

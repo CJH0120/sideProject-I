@@ -30,12 +30,19 @@ const New = () => {
   const HandleSign = async () => {
     if (allState) {
       userNew(userSate?.email, userSate.pw, userSate.nickName).then(() => {
-        alert('회원가입 완료')
+        alert('회원가입을 환영합니다.')
       })
     }
   }
   useEffect(() => {
-    if (errState && userSate.email && userSate.nickName && userSate.pw.length > 5 && userSate.pw === userSate.pwRe) {
+    if (
+      !errState.email &&
+      !errState.nickName &&
+      userSate.email &&
+      userSate.nickName &&
+      userSate.pw.length > 5 &&
+      userSate.pw === userSate.pwRe
+    ) {
       setAllState(r => true)
     } else {
       setAllState(r => false)
@@ -67,8 +74,7 @@ const New = () => {
     setUserState(userstae => ({ ...userstae, [name]: value }))
   }
   useEffect(() => {
-    userSate.pwRe &&
-    setErrState(errState=>({...errState, pwRe: userSate.pw !== userSate.pwRe  }))
+    userSate.pwRe && setErrState(errState => ({ ...errState, pwRe: userSate.pw !== userSate.pwRe }))
     !userSate.pw && setErrState(errstate => ({ ...errstate, pw: false }))
     !userSate.pwRe && setErrState(errstate => ({ ...errstate, pwRe: false }))
   }, [userSate])
