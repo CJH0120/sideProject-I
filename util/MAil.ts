@@ -15,7 +15,7 @@ export const sendMail = (res: NextApiResponse, email: string, link: string) => {
     from: process.env.NEXT_PUBLIC_EM,
     to: 'avr0120@naver.com',
     subject: '메일의 제목',
-    html: `<a href='http://localhost:3000/user/auth/${link}' 
+    html: `<a href='http://3.37.40.96/user/auth/${link}' 
     target='_blank'>
    url을 클릭하시면 가입 인증이 완료됩니다
  </a>`,
