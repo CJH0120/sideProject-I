@@ -1,4 +1,5 @@
 import Layout from 'components/layouts/Layouts'
+import Loading from 'components/layouts/Loading'
 
 const Hello = () => {
   return (

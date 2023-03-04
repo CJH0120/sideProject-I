@@ -3,9 +3,11 @@ import classNames from 'classnames/bind'
 import Button from 'components/control/Button'
 import Input, { InputProps } from 'components/control/Input'
 import IconLogo from 'components/icons/IconLogo'
+import Loading from 'components/layouts/Loading'
 import Link from 'next/link'
 import { Router } from 'next/router'
 import { MutableRefObject, HTMLInputTypeAttribute, useRef, useState, useEffect } from 'react'
+import { RingLoader } from 'react-spinners'
 import useAuth from 'util/useAuth'
 const cx = classNames.bind(Style)
 
@@ -27,8 +29,10 @@ const New = () => {
   const [userSate, setUserState] = useState<NewState>({ email: '', nickName: '', pw: '', pwRe: '' })
   const RefArr = useRef<HTMLInputElement[]>([])
   const [allState, setAllState] = useState<boolean>(false)
+  const [isClick, setIsClick] = useState<boolean>(false)
   const HandleSign = async () => {
     if (allState) {
+      setIsClick(true)
       userNew(userSate?.email, userSate.pw, userSate.nickName).then(() => {
         alert('회원가입을 환영합니다.')
       })
@@ -78,7 +82,6 @@ const New = () => {
     !userSate.pw && setErrState(errstate => ({ ...errstate, pw: false }))
     !userSate.pwRe && setErrState(errstate => ({ ...errstate, pwRe: false }))
   }, [userSate])
-
   const IconClick = (name?: string, idx?: number) => {
     RefArr.current[idx ?? 0].value = ''
     setUserState(userstae => ({ ...userstae, [name ?? 'name']: undefined }))
@@ -173,12 +176,13 @@ const New = () => {
             />
           ))}
         </div>
-        <div className={cx('btn-wrap')}>
+        <div className={cx('btn-wrap', isClick && 'act')}>
           <Button border size="XL" color={allState ? 'yellow' : 'disable'} onClick={HandleSign}>
             가입하기
           </Button>
         </div>
       </div>
+      {isClick && <Loading />}
     </div>
   )
 }

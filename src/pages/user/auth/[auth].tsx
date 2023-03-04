@@ -13,13 +13,13 @@ const Auth = () => {
       await mailTest(router.query.auth?.toString() ?? '', router.query.redirect?.toString())
     }
     Handler()
+      .then(() => {
+        alert('계정 인증이 완료 되었습니다. 로그인후 이용해주세요')
+      })
       .catch(e => {
         alert(e.message)
         router.push('/')
       })
-      .then(() => {
-        alert('계정 인증이 완료 되었습니다. 로그인후 이용해주세요')
-      })
-  }, [router.isReady, router.query.auth])
+  }, [mailTest, router, router.isReady, router.query.auth])
 }
 export default Auth

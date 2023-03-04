@@ -13,7 +13,7 @@ export const sendMail = (res: NextApiResponse, email: string, link: string) => {
 
   const mailOptions = {
     from: process.env.NEXT_PUBLIC_EM,
-    to: 'avr0120@naver.com',
+    to: email,
     subject: '메일의 제목',
     html: `<a href='http://3.37.40.96/user/auth/${link}' 
     target='_blank'>

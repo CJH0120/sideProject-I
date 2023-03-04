@@ -8,6 +8,7 @@ import Link from 'next/link'
 import useAuth from 'util/useAuth'
 import { useRouter } from 'next/router'
 import Input, { InputProps } from 'components/control/Input'
+import Loading from 'components/layouts/Loading'
 const cx = classNames.bind(Style)
 interface LoginType {
   email: string
@@ -16,10 +17,10 @@ interface LoginType {
 const Login: NextPage = () => {
   const router = useRouter()
   const { login } = useAuth()
+  const [isClick, setIsClick] = useState<boolean>(false)
   useEffect(() => {
     document.body.style.overflow = 'hidden'
   }, [])
-  const EmailRegex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}')
   const [loginState, setLoginState] = useState<LoginType>({ email: '', pw: '' })
   const LoginRef = useRef<HTMLInputElement[]>([])
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,7 +56,12 @@ const Login: NextPage = () => {
       LoginRef.current[1].focus()
       return
     }
-    await login(loginState.email, loginState.pw, router.query.redirect?.toString()).catch(err => alert(err.message))
+    setIsClick(true)
+    await login(loginState.email, loginState.pw, router.query.redirect?.toString())
+      .catch(err => alert(err.message))
+      .then(() => {
+        setIsClick(false)
+      })
   }
 
   const handlerLogin = (e: React.KeyboardEvent<HTMLElement>) => {
@@ -63,6 +69,7 @@ const Login: NextPage = () => {
   }
   return (
     <section className={cx('login-wrap')} onKeyDown={handlerLogin}>
+      {isClick && <Loading />}
       <div className={cx('login')}>
         <div className={cx('login-head')}>
           <Link href={'/'} className={cx('link')}>
