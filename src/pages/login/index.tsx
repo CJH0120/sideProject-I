@@ -57,6 +57,7 @@ const Login: NextPage = () => {
       return
     }
     setIsClick(state => !state)
+
     await login(loginState.email, loginState.pw, router.query.redirect?.toString())
       .catch(err => alert(err.message))
       .then(() => {

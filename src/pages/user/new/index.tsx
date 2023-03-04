@@ -143,6 +143,7 @@ const New = () => {
 
   return (
     <div className={cx('page-wrap')}>
+      {isClick && <Loading />}
       <div className={cx('new-wrap')}>
         <div className={cx('new-head-wrap')}>
           <Link href={'/'}>
@@ -182,7 +183,6 @@ const New = () => {
           </Button>
         </div>
       </div>
-      {isClick && <Loading />}
     </div>
   )
 }
