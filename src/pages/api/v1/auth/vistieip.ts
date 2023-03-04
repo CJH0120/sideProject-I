@@ -6,10 +6,6 @@ import { withCatch } from 'util/withCatch'
 
 const mariaDB = MariaDB.getInstance()
 
-interface ipType {
-  protocol41: boolean
-}
-
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { ipAdress } = req.body
   if (req.method === 'POST') {

@@ -15,8 +15,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       where  status = 0 and link = ? ;`,
       [key],
     )
-    if (!MailAuthList.length) throw { code: 401, message: '일치하는 정보가없습니다' }
-    console.log(MailAuthList.length)
+    if (!MailAuthList.length) throw { code: 401, message: '만료된 인증링크입니다.' }
 
     const findUser = MailAuthList[0].userId
 

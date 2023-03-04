@@ -40,7 +40,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       [id],
     )
 
-    console.log(statusCheck)
     if (Number(statusCheck[0].status) === 0) throw { code: 401, message: '인증을 마무리해주세요' }
 
     const accessToken = jwt.sign(EmailRegex.test(id) ? { ...memberList[0] } : { ...nickNameList[0] }, process.env.NEXT_PUBLIC_KEY || '', {

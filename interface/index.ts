@@ -25,3 +25,16 @@ export namespace ApiData {
     nickName: string
   }
 }
+
+export namespace Componets {
+  export interface CardItem {
+    image: string
+    title: string
+    id: number
+  }
+
+  export type CardList = {
+    title: string
+    Item: CardItem[]
+  }
+}

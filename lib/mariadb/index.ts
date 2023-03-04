@@ -23,8 +23,6 @@ export default class MariaDB {
       await this.conn.end()
       return res
     } catch (err) {
-      // if(err.sql) console.log(err.sql)
-
       if ((err as any).errno === 45017) err = { code: 500, message: '값이 존재하지 않습니다' }
       else if ((err as any).errno === 1064) err = { code: 500, message: '파라미터에 문제가 있습니다' }
       else if ((err as any).errno === 1062) err = { code: 500, message: '이미 존재하는 값입니다' } // 중복 insert
