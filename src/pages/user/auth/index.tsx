@@ -1,4 +1,6 @@
+import Loading from 'components/layouts/Loading'
+
 const Auth = () => {
-  return <div>asdasd</div>
+  return <Loading />
 }
 export default Auth
