@@ -31,7 +31,7 @@ const New = () => {
   const [allState, setAllState] = useState<boolean>(false)
   const [isClick, setIsClick] = useState<boolean>(false)
   const HandleSign = async () => {
-    setIsClick(true)
+    setIsClick(state => !state)
     if (allState) {
       userNew(userSate?.email, userSate.pw, userSate.nickName).then(() => {
         alert('회원가입을 환영합니다.')

@@ -56,11 +56,11 @@ const Login: NextPage = () => {
       LoginRef.current[1].focus()
       return
     }
-    setIsClick(true)
+    setIsClick(state => !state)
     await login(loginState.email, loginState.pw, router.query.redirect?.toString())
       .catch(err => alert(err.message))
       .then(() => {
-        setIsClick(false)
+        setIsClick(state => !state)
       })
   }
 
