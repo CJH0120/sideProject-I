@@ -8,13 +8,14 @@ import Loading from 'components/layouts/Loading'
 
 const Today = ({ props }: any) => {
   const { data, isLoading } = GetTodayDeatil(props)
-  console.log(data)
   const [datas, setData] = useState(data)
   useEffect(() => {
     setData(data!)
   }, [isLoading])
+  console.log(!!data)
   return (
     <Layout footer header>
+      {!data && <Loading />}
       <div dangerouslySetInnerHTML={{ __html: data?.detail ?? '' }} />
     </Layout>
   )
