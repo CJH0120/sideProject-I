@@ -27,12 +27,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       handleClick(e)
     }
     return (
-      <button
-        ref={ref}
-        onClick={HandleClick}
-        style={{ height: iconSize && iconSize + 5, width: iconSize && iconSize + 5 }}
-        className={cx('button-wrap', Classname, border && 'border', color, size)}
-      >
+      <button ref={ref} onClick={HandleClick} className={cx('button-wrap', Classname, border && 'border', color, size, Icon && 'icon')}>
         {children}
         {!!Icon && <Icon fontSize={iconSize} />}
       </button>

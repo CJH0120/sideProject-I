@@ -31,15 +31,19 @@ const Header = ({ meta = 'Petty', title = 'Petty', Nickname }: HeadPorps) => {
     }
   }, [isToggle])
   const category: string[] = ['Today', 'Best', 'TimeLine', 'Community']
-  const [dropDown,setdropDown] =useState<boolean>(false)
-  const handleDropDown=(e:React.MouseEvent)=>{
-    setdropDown(dropDown=>!dropDown)
+  const [dropDown, setdropDown] = useState<boolean>(false)
+  const handleDropDown = (e: React.MouseEvent) => {
+    setdropDown(dropDown => !dropDown)
   }
-const {logout} = useAuth()
-  const Handlelogout= async()=>{
-    await  logout()
+  const { logout } = useAuth()
+  const Handlelogout = async () => {
+    await logout()
   }
-  const LoginList:ListProps[]=[{link:"",list:"마이페이지"},{link:"",list:"공지사항"},{link:"",list:"로그아웃",onclik:Handlelogout}]
+  const LoginList: ListProps[] = [
+    { link: '', list: '마이페이지' },
+    { link: '', list: '공지사항' },
+    { link: '', list: '로그아웃', onclik: Handlelogout },
+  ]
   return (
     <>
       <Head>
@@ -91,11 +95,11 @@ const {logout} = useAuth()
               </>
             ) : (
               <div className={cx('user')}>
-                <Button icon={IconHeart} iconSize={24} Classname={cx('icons')} />
-                <Button icon={IconPin2} iconSize={24} Classname={cx('icons')} />
-                <Button size="L" Classname={cx('nickName',dropDown &&"act")} onClick={handleDropDown}>
+                <Button icon={IconHeart} iconSize={24} Classname={cx('icons')} size="M" />
+                <Button icon={IconPin2} iconSize={24} Classname={cx('icons')} size="M" />
+                <Button size="L" Classname={cx('nickName', dropDown && 'act')} onClick={handleDropDown}>
                   {Nickname} <IconArrowDown />
-                  {dropDown &&  <DropDown list={LoginList} size="S" />  }
+                  {dropDown && <DropDown list={LoginList} size="S" />}
                 </Button>
                 <Button size="L" color="yellow" border Classname={cx('btn')}>
                   글쓰기

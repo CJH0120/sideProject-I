@@ -1,5 +1,5 @@
 import useSWR, { KeyedMutator, SWRConfiguration, BareFetcher } from 'swr'
-import { ApiData } from '../interface'
+import { ApiData, Componets } from '../interface'
 import { fetcher } from './fetcher'
 type Result<Data, Error> = {
   data?: Data
@@ -27,5 +27,27 @@ export const useMember = <Data = ApiData.Member, Error = any>(
   fetcherConfig?: SWRConfiguration<Data, Error, BareFetcher<Data>>,
 ) => {
   const { data, error, mutate } = useSWR<Data, Error>(`/api/v1/member${qs({ redirect, id })}`, fetcher, fetcherConfig)
+  return result<Data, Error>(mutate, data, error)
+}
+
+//시작페이지 데이터 가져오기
+export const GetIndex = <Data = Componets.Items[], Error = any>(
+  redirect?: string,
+  fetcherConfig?: SWRConfiguration<Data, Error, BareFetcher<Data>>,
+) => {
+  const { data, error, mutate } = useSWR<Data, Error>(`/api/v1/pages`, fetcher, fetcherConfig)
+  return result<Data, Error>(mutate, data, error)
+}
+
+//Today
+export const GetToday = <Data = Componets.Items[], Error = any>(fetcherConfig?: SWRConfiguration<Data, Error, BareFetcher<Data>>) => {
+  const { data, error, mutate } = useSWR<Data, Error>(`/api/v1/pages/today`, fetcher, fetcherConfig)
+  return result<Data, Error>(mutate, data, error)
+}
+export const GetTodayDeatil = <Data = ApiData.Page.PagesComm, Error = any>(
+  id?: string,
+  fetcherConfig?: SWRConfiguration<Data, Error, BareFetcher<Data>>,
+) => {
+  const { data, error, mutate } = useSWR<Data, Error>(`/api/v1/pages/today/detail/${id}`, fetcher, fetcherConfig)
   return result<Data, Error>(mutate, data, error)
 }

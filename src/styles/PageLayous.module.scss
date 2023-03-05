@@ -1,0 +1,22 @@
+@import './variables.scss';
+
+.page-wrap {
+  .page-head {
+    display: flex;
+    height: auto;
+    align-items: flex-end;
+    padding: 10px 0 20px;
+    border-bottom: 1px solid $black-10;
+    margin-bottom: 20px;
+    & > p {
+      display: flex;
+    }
+
+    .page-desc {
+      font-size: 25px;
+      font-weight: 600;
+      height: 100%;
+      align-items: self-end;
+    }
+  }
+}

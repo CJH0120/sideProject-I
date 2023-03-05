@@ -120,6 +120,7 @@
         align-items: center;
         justify-content: flex-end;
         .icons {
+          width: 36px;
           &:hover {
             color: $main-color;
           }

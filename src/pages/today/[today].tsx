@@ -1,14 +1,36 @@
 import Layout from 'components/layouts/Layouts'
-import { NextPage } from 'next'
+import { GetServerSideProps, GetStaticPaths, NextPage, NextPageContext } from 'next'
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
+import { GetToday, GetTodayDeatil } from 'util/apiHook'
+import { ApiData } from 'interface'
+import Loading from 'components/layouts/Loading'
 
-const Today: NextPage = () => {
-  const router = useRouter()
-  const { today } = router.query
+const Today = ({ props }: any) => {
+  const { data, isLoading } = GetTodayDeatil(props)
+  console.log(data)
+  const [datas, setData] = useState(data)
+  useEffect(() => {
+    setData(data!)
+  }, [isLoading])
   return (
     <Layout footer header>
-      <div>게시글 : {today}번</div>
+      <div dangerouslySetInnerHTML={{ __html: data?.detail ?? '' }} />
     </Layout>
   )
 }
+
 export default Today
+export async function getStaticProps({ params }: any) {
+  // const { data } = GetTodayDeatil(params.today)
+
+  return {
+    props: { props: params.today },
+  }
+}
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: true,
+  }
+}

@@ -11,7 +11,6 @@ type LayoutPorps = {
 }
 const Layout = ({ children, footer, header }: LayoutPorps) => {
   const { data, isLoading } = useMember()
-  console.log(data?.nickName)
 
   const cx = classNames.bind(Style)
   return (
