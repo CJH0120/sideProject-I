@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <Layout footer header>
       {isLoading && <Loading />}
-      {datas?.map((v, idx) => (
+      {data?.map((v, idx) => (
         <CardList item={v.item} title={v.title} key={idx} likes header />
       ))}
     </Layout>
