@@ -19,7 +19,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           `,
       [ids],
     )
-    // if (FindDetail.length === 0) res.status(404).redirect('/404')
+    if (FindDetail.length === 0) res.status(404).redirect('/404')
     res.status(200).json(FindDetail[0])
   }
 }
