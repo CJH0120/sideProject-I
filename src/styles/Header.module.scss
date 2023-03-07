@@ -37,7 +37,7 @@
           }
         }
         .logo-text {
-          font-weight: 900;
+          font-weight: 700;
           font-size: 35px;
           line-height: 100%;
           margin-left: 6px;
@@ -55,7 +55,6 @@
         align-items: center;
         height: 45px;
         font-weight: 200;
-        width: 395px;
         margin-left: 80px;
         flex-wrap: wrap;
         gap: 30px;
@@ -143,8 +142,12 @@
           width: 100px;
           margin-left: 10px;
         }
+
         @media all and (max-width: $media-width) {
           display: none;
+        }
+        @media all and (max-width: 1156px) {
+          width: auto;
         }
       }
     }

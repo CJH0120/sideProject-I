@@ -30,7 +30,7 @@ export namespace ApiData {
   export namespace Page {
     export type PagesComm = {
       userNick: string
-      titile: string
+      title: string
       detail: string
       regDate: string
     }

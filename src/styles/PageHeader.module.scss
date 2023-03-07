@@ -1,0 +1,14 @@
+@import './variables.scss';
+
+.page-header {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  border-bottom: 1px solid $black-10;
+  font-weight: 400;
+  @media all and (max-width: $media-width) {
+    height: 40px;
+    font-size: 20px;
+  }
+}

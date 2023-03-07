@@ -13,8 +13,7 @@
 
   .toogle-content {
     font-family: 'Noto Sans KR', sans-serif;
-    transition: all 1s ease-in-out;
-    transition-duration: 400ms;
+
     overflow: hidden;
     cursor: pointer;
     position: absolute;
@@ -22,7 +21,7 @@
     height: 100%;
     right: 0;
     background: $white;
-    animation: 0.2s fa forwards;
+    animation: 0.25s fa forwards;
     padding: 10px 15px;
 
     .toogle-head {
