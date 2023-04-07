@@ -3,9 +3,8 @@ import classNames from 'classnames/bind'
 import Button from 'components/control/Button'
 import IconFillHeart from 'components/icons/IconFillHeart'
 import IconHeart from 'components/icons/IconHeart'
-import { image, commerce, random } from 'faker/locale/ko'
 import { Componets } from 'interface'
-import Image, { ImageLoader } from 'next/image'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useMember } from 'util/apiHook'
@@ -43,6 +42,7 @@ const CardList = ({ item, title, header, likes }: Componets.CardItem) => {
                   unoptimized
                   loader={loaderProp}
                   fill
+                  placeholder="blur"
                   className={cx('image')}
                   style={{ objectFit: 'cover' }}
                   alt={'귀여운 우리 망고'}
