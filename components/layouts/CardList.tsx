@@ -45,6 +45,7 @@ const CardList = ({ item, title, header, likes }: Componets.CardItem) => {
                   placeholder="blur"
                   className={cx('image')}
                   style={{ objectFit: 'cover' }}
+                  blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
                   alt={'귀여운 우리 망고'}
                   loading="lazy"
                 />
