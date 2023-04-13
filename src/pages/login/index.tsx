@@ -9,6 +9,8 @@ import useAuth from 'util/useAuth'
 import { useRouter } from 'next/router'
 import Input, { InputProps } from 'components/control/Input'
 import Loading from 'components/layouts/Loading'
+import MobileLogo from 'components/layouts/Logo'
+import Logo from 'components/layouts/Logo'
 const cx = classNames.bind(Style)
 interface LoginType {
   email: string
@@ -72,14 +74,7 @@ const Login: NextPage = () => {
     <section className={cx('login-wrap')} onKeyDown={handlerLogin}>
       {isClick && <Loading />}
       <div className={cx('login')}>
-        <div className={cx('login-head')}>
-          <Link href={'/'} className={cx('link')}>
-            <span className={cx('logo')}>
-              <IconLogo className={cx('icon-logo')} />
-            </span>
-            <h1 className={cx('logo-text')}>Petty</h1>
-          </Link>
-        </div>
+        <Logo />
         <div className={cx('login-contnet')}>
           <div className={cx('login-input-wrap')}>
             <div className={cx('login-input')}>

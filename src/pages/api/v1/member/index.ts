@@ -22,7 +22,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       `,
       [refineId],
     )
-
     if (!memberList?.length) throw { code: 401, message: '일치하는 계정이 없습니다.' }
     res.json(memberList[0])
   }

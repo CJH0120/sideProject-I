@@ -4,6 +4,7 @@ import Button from 'components/control/Button'
 import Input, { InputProps } from 'components/control/Input'
 import IconLogo from 'components/icons/IconLogo'
 import Loading from 'components/layouts/Loading'
+import Logo from 'components/layouts/Logo'
 import Link from 'next/link'
 import { Router } from 'next/router'
 import { MutableRefObject, HTMLInputTypeAttribute, useRef, useState, useEffect } from 'react'
@@ -31,8 +32,8 @@ const New = () => {
   const [allState, setAllState] = useState<boolean>(false)
   const [isClick, setIsClick] = useState<boolean>(false)
   const HandleSign = async () => {
-    setIsClick(state => !state)
     if (allState) {
+      setIsClick(state => !state)
       userNew(userSate?.email, userSate.pw, userSate.nickName).then(() => {
         alert('회원가입을 환영합니다.')
       })
@@ -145,14 +146,7 @@ const New = () => {
     <div className={cx('page-wrap')}>
       {isClick && <Loading />}
       <div className={cx('new-wrap')}>
-        <div className={cx('new-head-wrap')}>
-          <Link href={'/'}>
-            <div className={cx('new-head')}>
-              <IconLogo className={cx('logo')} />
-              <p className={cx('head-text')}>Petty</p>
-            </div>
-          </Link>
-        </div>
+        <Logo />
         <div className={cx('input-wrap')}>
           {list.map((v, idx) => (
             <Input
